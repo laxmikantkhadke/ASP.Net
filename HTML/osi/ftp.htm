@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="format1.css">
+<style>
+body
+{
+background-color:white;
+}
+table,th,td
+{
+border:1px solid blue;
+}
+</style>
+<title>FTP</title>
+</head>
+<body>
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<b>
+<center>
+<h1>
+File Transfer Protocol<br/> FTP
+</h1>
+</center>
+</b>
+<hr color="black">
+<p>
+<h3>FTP Protocol : </h3>
+FTP, or the file transfer protocol, provides a simple but robust
+mechanism for copying files to or from remote hosts using the
+connection-oriented services of TCP/IP. FTP is a component of
+the TCP/IP protocol, and is defined in RFC 959. To use FTP to
+send or receive files, the following requirements must be met:
+<ul>
+<li>The client computer must have FTP client software, such as
+the FTP client included with Windows NT.</li>
+<li>The user must have a user name and password on the remote
+system. In some cases, a user name of anonymous with
+no password suffices.</li>
+<li>The remote system must be running an FTP daemon.</li>
+<li>Your system and the remote system must be running the
+TCP/IP protocol.</li>
+</ul>
+<br/>
+You can use FTP in either a command line mode or in a command
+interpreter mode. The following options are available from
+the command line:<br/>
+Transfers files to and from a computer running an FTP server
+service (sometimes called a daemon). FTP can be used
+interactively.<br/>
+FTP [-v] [-d] [-i] [-n] [-g] [-s:filename] [-a] [-w:windowsize]
+[host
+<br/>
+-v &nbsp;&nbsp;Suppresses display of remote server responses.<br/>
+-n &nbsp;&nbsp;Suppresses auto-login upon initial connection.<br/>
+-i &nbsp;&nbsp;Turns off interactive prompting during multiple
+file transfers.<br/>
+-d &nbsp;&nbsp;Enables debugging.<br/>
+-g &nbsp;&nbsp;Disables filename globbing (see GLOB command).<br/>
+-s:&nbsp;&nbsp;filename Specifies a text file containing FTP commands;
+the commands will automatically run &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;after FTP
+starts.<br/>
+-a &nbsp;&nbsp;Use any local interface when binding data
+connection.<br/>
+-w:&nbsp;&nbsp;buffersize Overrides the default transfer buffer size of
+4096.<br/><br/>
+host Specifies the host name or IP address of the
+remote host to connect to.
+<br/>
+If you use FTP in a command interpreter mode, some of the more
+frequently used options are as follows:<br/>
+<ul>
+<li><b>open.</b> Specifies the remote system to which you connect.</li>
+<li><b>close.</b> Disconnects from a remote system.</li>
+<li><b>ls.</b> Obtains a directory listing on a remote system, much like
+the dir command in DOS. Note that the ls –l command provides
+file size and time stamps.</li>
+<li><b>cd.</b> Changes directories on the remote system. This command
+functions in much the same way as the DOS cd command.</li>
+<li><b>lcd.</b> Changes directories on the local system. This command
+also functions in much the same way as the DOS cd command.</li>
+<li><b>binary.</b> Instructs FTP to treat all files transferred as binary.</li>
+<li><b>ascii.</b> Instructs FTP to treat all files transferred as text.</li>
+<li><b>get.</b> Copies a file from the remote host to your local computer.</li>
+<li><b>put.</b> Copies a file from your local computer to the remote
+host.</li>
+<li><b>debug.</b> Turns on debugging commands that can be useful in
+diagnosing problems.</li>
+</ul>
+<img src="ftp.jpg" align="center">
+<h3>FTP Access Control Commands</h3>
+<table width ="600" bgcolor="white" border ="3">
+<tr>
+	<th align="center">Command Code</th>
+	<th align="center">Command</th>
+	<th align="center">Description</th>
+</tr>
+<tr>
+	<td align="center"><b>USER</b></td>
+	<td align="center">User Name</td>
+	<td align="left">Identifies the user attempting to establish an FTP session.</td>
+</tr>
+<tr>
+	<td align="center"><b>PASS</b></td>
+	<td align="center">Password</td>
+	<td align="left">Specifies the password for the user given previously by USER command during login authentication.</td>	
+</tr>
+<tr>
+	<td align="center"><b>ACCT</b></td>
+	<td align="center">Account</td>
+	<td align="left">Specifies an account for authenticated USER during the FTP session. Only used on systems that require this to be separately identified; most select an account automatically based on the name entered in the USER command</td>	
+</tr>
+<tr>
+	<td align="center"><b>CWD</b></td>
+	<td align="center">Change Working Directory</td>
+	<td align="left">Allows the user to specify a different directory for file transfer during an FTP session.</td>	
+</tr>
+<tr>
+	<td align="center"><b>CDUP</b></td>
+	<td align="center">Change To Parent Directory ("Change Directory Up")</td>
+	<td align="left">Aspecial case of the CWD command that goes to the directory one level up in the server's directory structure. It is implemented separately to abstract out differences in directory structures between file systems; the user can just use CDUO instead of knowing the specific syntax for navigating up the directory tree on the server.</td>	
+</tr>
+<tr>
+	<td align="center"><b>SMNT</b></td>
+	<td align="center">Structure Mount</td>
+	<td align="left">Allows the user to mount a perticular file system for access to different resources.</td>	
+</tr>
+<tr>
+	<td align="center"><b>REIN</b></td>
+	<td align="center">Reinitialize</td>
+	<td align="left">Reinitializes the FTP session, flushing all set parameters and user information. This returns the session to the state when the control connection is just established. It is, in essence, the opposite od the USER command. The next command issued is often USER, to log in a different user.</td>	
+</tr>
+<tr>
+	<td align="center"><b>QUIT</b></td>
+	<td align="center">Logout</td>
+	<td align="left">Terminates the FTP session and closes the control connection.<br/><br/> Note that the naming of this command "Logout" was unfortunate; the REIN command is really most similar to a conventional "logout" command, as it terminates a lagged-in user and allows another user to log in. In contrast, the QUIT command shuts down the entire session.</td>	
+</tr>
+</table>
+
+<h3>FTP Transfer Parameter Commands</h3>
+
+<table width ="600" bgcolor="white" border ="3">
+<tr>
+	<th align="center">Command Code</th>
+	<th align="center">Command</th>
+	<th align="center">Description</th>
+</tr>
+<tr>
+	<td align="center"><b>PORT</b></td>
+	<td align="center">Data Port</td>
+	<td align="left">Used to tell the FTP server that the client wants to accept an active data connection on specific port number.</td>
+</tr>
+<tr>
+	<td align="center"><b>PASV</b></td>
+	<td align="center">Passive</td>
+	<td align="left">Requests that the FTP server allow the Use-DTP to initiate passive data connections.</td>
+</tr>
+<tr>
+	<td align="center"><b>TYPE</b></td>
+	<td align="center">Representative Type</td>
+	<td align="left">Specifies for the file to be transferred the data type (ASCII, EBCDIC, Image or Local), and optionally the format control (Non Print, Telnet or Carriage Control).</td>
+</tr>
+<tr>
+	<td align="center"><b>STRU</b></td>
+	<td align="center">File Structure</td>
+	<td align="left">Specifies the data structure for the file (File, Record or Page).</td>
+</tr>
+<tr>
+	<td align="center"><b>MODE</b></td>
+	<td align="center">Transfer Mode</td>
+	<td align="left">Specifies the transmission mode to be used (Stream, Block or Compressed).</td>
+</tr>
+</table>
+
+<h3>FTP Service Commands</h3>
+
+<table width ="600" bgcolor="white" border ="3">
+<tr>
+	<th align="center">Command Code</th>
+	<th align="center">Command</th>
+	<th align="center">Description</th>
+</tr>
+<tr>
+	<td align="center"><b>RETR</b></td>
+	<td align="center">Retrieve</td>
+	<td align="left">Tells the server to send the user a file.</td>
+</tr>
+<tr>
+	<td align="center"><b>STOR</b></td>
+	<td align="center">Store</td>
+	<td align="left">Send a file to the server.</td>
+</tr>
+<tr>
+	<td align="center"><b>STOU</b></td>
+	<td align="center">Store Unique</td>
+	<td align="left">Like STOR, but instructs the server to make sure the file has a unique name in the curreent directory. This is used to prevent overwriting a file that may already exist with the same name. The server replies back with the name used for the file.</td>
+</tr>
+<tr>
+	<td align="center"><b>APPE</b></td>
+	<td align="center">Append (with Create)</td>
+	<td align="left">Like STOR, but if a file with the name specified already exists, the data being sent is appended to it instead of replacing it.</td>
+</tr>
+<tr>
+	<td align="center"><b>ALLO</b></td>
+	<td align="center">Allocate</td>
+	<td align="left">An optional command used to reserve storage on the server before a file is sent.</td>
+</tr>
+<tr>
+	<td align="center"><b>REST</b></td>
+	<td align="center">Restart</td>
+	<td align="left">Restarts a file transfer at a particular server marker. Used only for Block or Compressed transfer modes.</td>
+</tr>
+<tr>
+	<td align="center"><b>RNFR</b></td>
+	<td align="center">Rename From</td>
+	<td align="left">Specifies the old name of a file to be renamed. See the RNTO command just below.</td>
+</tr>
+<tr>
+	<td align="center"><b>RNTO</b></td>
+	<td align="center">Rename To</td>
+	<td align="left">Specifies the new name of file to be renamed. Used with the RNFR command.</td>
+</tr>
+<tr>
+	<td align="center"><b>ABOR</b></td>
+	<td align="center">Abort</td>
+	<td align="left">Tells the server to abort the last FTP command and/or the current data transfer.</td>
+</tr>
+<tr>
+	<td align="center"><b>DELE</b></td>
+	<td align="center">Delete</td>
+	<td align="left">Deletes a specified file on the server.</td>
+</tr>
+<tr>
+	<td align="center"><b>RMD</b></td>
+	<td align="center">Remove Directory To</td>
+	<td align="left">Deletes a directory on the server.</td>
+</tr>
+<tr>
+	<td align="center"><b>MKD</b></td>
+	<td align="center">Make Directory</td>
+	<td align="left">Creates a directory.</td>
+</tr>
+<tr>
+	<td align="center"><b>PWD</b></td>
+	<td align="center">Print Working Directory</td>
+	<td align="left">DIsplayes the current server working directory for the FTP session; shows the user "where they are" in the server's file system.</td>
+</tr>
+<tr>
+	<td align="center"><b>LIST</b></td>
+	<td align="center">List</td>
+	<td align="left">Requests a list of the contents of the current directory from the server, including both manes and the other information. Similar in concept to the "DIR" command in DOS/Windows or the "IS" command in UNIX. </td>
+</tr>
+<tr>
+	<td align="center"><b>NLST</b></td>
+	<td align="center">Name List</td>
+	<td align="left">Like LIST, but returns only the names in a directory.</td>
+</tr>
+<tr>
+	<td align="center"><b>SITE</b></td>
+	<td align="center">Site Parameters</td>
+	<td align="left">Used to implement site-specific functions.</td>
+</tr>
+<tr>
+	<td align="center"><b>SYST</b></td>
+	<td align="center">System</td>
+	<td align="left">Requests that the server send to the client information about the server's operating system.</td>
+</tr>
+<tr>
+	<td align="center"><b>STAT</b></td>
+	<td align="center">Status</td>
+	<td align="left">Prompts the server to send an indication of the status of a file or the transfer currently in progress.</td>
+</tr>
+<tr>
+	<td align="center"><b>HELP</b></td>
+	<td align="center">Help</td>
+	<td align="left">Asks the server for any help information that might be useful in allowing the user to determine how the server should be used.</td>
+</tr>
+<tr>
+	<td align="center"><b>NOOP</b></td>
+	<td align="center">No Operation</td>
+	<td align="left">Does nothing, other than prompting the servsr to send an "OK" response to verify that the control channel is alive.</td>
+</tr>
+</table>
+
+<h3>FTP User Commands</h3>
+<table width ="600" bgcolor="white" border ="3">
+<tr>
+	<th align="center">User Command</th>
+	<th align="center">Description</th>
+</tr>
+<tr>
+	<td align="left"><b>account &lt;account-name&gt;</b></td>
+	<td align="left">Sends the ACCT command to access a particular account on the server.</td>
+</tr>
+<tr>
+	<td align="left"><b>append &lt;file-name&gt;</b></td>
+	<td align="left">Appends data to file using APPE.</td>
+</tr>
+<tr>
+	<td align="left"><b>ascii</b></td>
+	<td align="left">Sets the ASCII data type for subsequent transfers.</td>
+</tr>
+<tr>
+	<td align="left"><b>binary</b></td>
+	<td align="left">Sets the Image data type for subsequent transfers. Same as the image command.</td>
+</tr>
+<tr>
+	<td align="left"><b>bye</b></td>
+	<td align="left">Terminates FTP session and exits the FTP client (same as exit and quit).</td>
+</tr>
+<tr>
+	<td align="left"><b>cd &lt;directory-path&gt;</b></td>
+	<td align="left">Change remote server working directory (using CWD protocol command.)</td>
+</tr>
+<tr>
+	<td align="left"><b>cdup</b></td>
+	<td align="left">Go to parent of current working directory.</td>
+</tr>
+<tr>
+	<td align="left"><b>chmod &lt;file-name&gt;</b></td>
+	<td align="left">On UNIX systems, change file permissions of file.</td>
+</tr>
+<tr>
+	<td align="left"><b>close</b></td>
+	<td align="left">Closes a particular FTP session but user stays at FTP command line.</td>
+</tr>
+<tr>
+	<td align="left"><b>debug</b></td>
+	<td align="left">Sets debug mode.</td>
+</tr>
+<tr>
+	<td align="left"><b>delete &lt;file-name&gt;</b></td>
+	<td align="left">Deletes a file on the FTP server.</td>
+</tr>
+<tr>
+	<td align="left"><b>dir [&lt;optional-file-specification&gt;]</b></td>
+	<td align="left">Lists contents of current working directory (or files matching the specification).</td>
+</tr>
+<tr>
+	<td align="left"><b>exit</b></td>
+	<td align="left">Another synonym for bye and quit. </td>
+</tr>
+<tr>
+	<td align="left"><b>form &lt;format&gt;</b></td>
+	<td align="left">Sets transfer format. </td>
+</tr>
+<tr>
+	<td align="left"><b>ftp &lt;ftp-server&gt;</b></td>
+	<td align="left">Opens session to FTP server. </td>
+</tr>
+<tr>
+	<td align="left"><b>get &lt;file-name&gt;[&lt;dest-file-name&gt;]</b></td>
+	<td align="left">Get a file. If the "&lt;dest-file-name&gt;" parameter is specified, it is used for the name of the file retrieved; otherwise, the source file name is used. </td>
+</tr>
+<tr>
+	<td align="left"><b>help [&lt;optional-command-name&gt;]</b></td>
+	<td align="left">Displays FTP client help information. Same as ?. </td>
+</tr>
+<tr>
+	<td align="left"><b>image</b></td>
+	<td align="left">Set Image data type, like the binary command. </td>
+</tr>
+<tr>
+	<td align="left"><b>Is [&lt;optional-file-specification&gt;]</b></td>
+	<td align="left">Lists contents of current working directory (or files matching the specification). Same as dir. </td>
+</tr>
+<tr>
+	<td align="left"><b>mget &lt;file-specification&gt;</b></td>
+	<td align="left">Gets multiple files from the server. </td>
+</tr>
+<tr>
+	<td align="left"><b>mkdir &lt;directory-name&gt;</b></td>
+	<td align="left">Create directory on remote server. </td>
+</tr>
+<tr>
+	<td align="left"><b>mode &lt;transfer-mode&gt;</b></td>
+	<td align="left">Set file transfer mode. </td>
+</tr>
+<tr>
+	<td align="left"><b>mput &lt;file-specification&gt;</b></td>
+	<td align="left">Sends ("puts") multiple files to the server. </td>
+</tr>
+<tr>
+	<td align="left"><b>msend &lt;file-specification&gt;</b></td>
+	<td align="left">Same as mput. </td>
+</tr>
+<tr>
+	<td align="left"><b>open &lt;ftp-server&gt;</b></td>
+	<td align="left">Open session to FTP server (same as ftp). </td>
+</tr>
+<tr>
+	<td align="left"><b>passive </b></td>
+	<td align="left">Turns passive transfer mde on or off. </td>
+</tr>
+<tr>
+	<td align="left"><b>put &lt;file-name&gt;[&lt;dest-file-name&gt;]</b></td>
+	<td align="left">Sends a file to the server. If the "&lt;dest-file-name&gt;" parameter is speciied, it is used as the name for the file on the destination host; otherwise, the source file name is used. </td>
+</tr>
+<tr>
+	<td align="left"><b>pwd </b></td>
+	<td align="left">Prints current working directory. </td>
+</tr>
+<tr>
+	<td align="left"><b>quit </b></td>
+	<td align="left">Terminates FTP session and exits FTP client (same as bye and exit.) </td>
+</tr>
+<tr>
+	<td align="left"><b>recv &lt;file-name&gt;[&lt;dest-file-name&gt;]</b></td>
+	<td align="left">Receives file (same as get). If the "&lt;dest-file-name&gt;" parameter is specified, it is used for the name of the file retrieved; otherwise , the source file name is used. </td>
+</tr>
+<tr>
+	<td align="left"><b>rename &lt;old-file-name&gt;&lt;new-file-name&gt;</b></td>
+	<td align="left">Renames a file. </td>
+</tr>
+<tr>
+	<td align="left"><b>rhelp</b></td>
+	<td align="left">Displays remote help information, obtained using FTP HELP command. </td>
+</tr>
+<tr>
+	<td align="left"><b>rmdir &lt;directory-name&gt; </b></td>
+	<td align="left">Removes a directory. </td>
+</tr>
+<tr>
+	<td align="left"><b>send &lt;file-name&gt;[&lt;dest-file-name&gt;]</b></td>
+	<td align="left">Sends a file (same as put). If the "&lt;dest-file-name&gt;" parameter is specified, it is used as the name for the file on the destination host; otherwise, the source file name is used. </td>
+</tr>
+<tr>
+	<td align="left"><b>site</b></td>
+	<td align="left">Sends a site-specific command to he server. </td>
+</tr>
+<tr>
+	<td align="left"><b>size &lt;file-name&gt; </b></td>
+	<td align="left">Show size of remote file. </td>
+</tr>
+<tr>
+	<td align="left"><b>status</b></td>
+	<td align="left">Displays current session status. </td>
+</tr>
+<tr>
+	<td align="left"><b>struct &lt;structure-type&gt; </b></td>
+	<td align="left">Sets file structure. </td>
+</tr>
+<tr>
+	<td align="left"><b>system </b></td>
+	<td align="left">Shows the server's operating system type. </td>
+</tr>
+<tr>
+	<td align="left"><b>type &lt;data-type&gt; </b></td>
+	<td align="left">Sets data type for transferrs. </td>
+</tr>
+<tr>
+	<td align="left">user &lt;user-name&gt; </b></td>
+	<td align="left">Log in to server as new user. Server will prompt for password. </td>
+</tr>
+<tr>
+	<td align="left"><b>? [&lt;optional-command-name&gt; </b></td>
+	<td align="left">Displays FTP client help information. Same as help. </td>
+</tr>
+</table>
+
+</p>
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

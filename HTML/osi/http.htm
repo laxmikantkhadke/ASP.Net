@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body
+{
+background-color:white
+}
+<link rel="stylesheet" href="format1.css">
+
+</style>
+<title>HTTP</title>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<body>
+
+<b>
+
+<center>
+<h1>
+HTTP Protocol</br> HTTP
+</h1>
+</center>
+
+</b>
+<hr>
+<p style:"center";>
+<h3>HTTP Protocol : An Overview</h3>
+ 
+The Hypertext Transfer Protocol (HTTP) is an application-level protocol with the lightness and speed necessary for distributed, collaborative, hypermedia information systems. It is a generic, stateless, object-oriented protocol which can be used for many tasks, such as name servers and distributed object management systems, through extension of its request methods (commands). A feature of HTTP is the typing of data representation, allowing systems to be built independently of the data being transferred.<br/>
+ 
+The HTTP is based on a request/response paradigm. A client establishes a connection with a server and sends a request to the server in the form of a request method, URL, and protocol version, followed by a MIME-like message containing request modifiers, client information, and possible body content. The server responds with a status line, including the message's protocol version and a success or error code, followed by a MIME-like message containing server information, entity maintain information, and possible body content.<br/>
+ 
+WebNMS supports the development of HTTP agents which confirms to HTTP 1.0 and HTTP 1.1 version.<br/>
+ 
+<h3>HTTP Basics</h3>
+ 
+HTTP stands for Hypertext Transfer Protocol. It's the network protocol used to deliver virtually all files and other data (collectively called resources) on the World Wide Web, whether they're HTML files, image files, query results, or anything else. Usually, HTTP takes place through TCP/IP sockets.<br/>
+ 
+A browser is an HTTP client because it sends requests to an HTTP server (Web server), which then sends responses back to the client. The standard (and default) port for HTTP servers to listen on is 80, though they can use any port.<br/>
+ 
+HTTP is used to transmit resources, not just files. A resource is some chunk of information that can be identified by a URL (Uniform Resource Locator). The most common kind of resource is a file, but a resource may also be a dynamically-generated query result, the output of a CGI script, a document that is available in several languages, or something else.<br/>
+ 
+<h3>Structure of HTTP Transaction</h3>
+ 
+Like most network protocols, HTTP uses the client-server model. An HTTP client opens a connection and sends a request message to an HTTP server; the server then returns a response message, usually containing the resource that was requested. After delivering the response, the server closes the connection (making HTTP a stateless protocol, i.e., not maintaining any connection information between transactions).<br/>
+ 
+The format of the request and response messages is similar and English-oriented. Both kinds of messages consist of:<br/>
+ 
+an initial line,<br/>
+zero or more header lines,<br/>
+a blank line (i.e., a CRLF by itself), and<br/>
+an optional message body (e.g., a file, or query data, or query output).<br/><br/>
+ 
+In other words, the format of an HTTP message is<br/>
+ 
+<initial line, different for request vs. response><br/>
+Header1: value1<br/>
+Header2: value2<br/>
+Header3: value3<br/>
+<optional message body goes here, like file contents or query data;<br/>
+ 
+it can be many lines long, or even binary data $&*%@!^$@><br/>
+ 
+Initial lines and headers should end in CRLF, though you should gracefully handle lines ending in just LF. (More exactly, CR and LF here mean ASCII values 13 and 10, even though some platforms may use different characters.)<br/>
+ 
+<h3>HTTP Methods</h3>
+ 
+A request line has three parts, separated by spaces: a method name, the local path of the requested resource, and the version of HTTP being used. There are three HTTP Methods, namely GET, HEAD, and POST.
+ 
+<h3>The GET Method</h3>
+ 
+GET is the most common HTTP method; it says "give me this resource". Other Method names are always in uppercase. The GET method can also be used to submit forms. The form data are URL-encoded and appended to the request URL.
+ 
+<h3>The HEAD Method</h3>
+ 
+A HEAD request is just like a GET request, except it asks the server to return the response headers only, and not the actual resource (i.e., no message body). This is useful to check characteristics of a resource without actually downloading it, thus saving bandwidth. Use HEAD when you don't actually need a file's contents. The response to a HEAD request must never contain a message body, but just the status line and headers.
+ 
+<h3>The POST Method</h3>
+ 
+POST request is used to send data to be processed to the server in some way, such as using a CGI script. A POST request is different from a GET request in the following ways:
+There's a block of data sent with the request, in the message body. There are usually extra headers to describe this message body, like Content-Type: and Content-Length:.
+The request URL is not a resource to retrieve; it's usually a program to handle the data you're sending.
+The HTTP response is normally program output, not a static file. The most common use of POST, by far, is to submit HTML form data to CGI scripts. In this case, the Content-Type: header is usually application/x-www-form-url encoded, and the Content-Length: header gives the length of the URL-encoded form data. You can use a POST request to send whatever data you want, not just form submissions. Just make sure the sender and the receiving program agree on the format.
+</p>
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

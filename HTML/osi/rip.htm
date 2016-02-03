@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="format1.css">
+<title>RIP</title>
+</head>
+<body>
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<body bgcolor= "white"/>
+
+<b>
+
+<center>
+<h1>
+Routing Information Protocol </br> RIP
+</h1>
+</center>
+
+</b>
+<hr color="black">
+
+The Routing Information Protocol (RIP) is a distance-vector routing protocol, which employs the hop count as a routing metric. RIP prevents routing loops by implementing a limit on the number of hops allowed in a path from the source to a destination. The maximum number of hops allowed for RIP is 15. This hop limit, however, also limits the size of networks that RIP can support. A hop count of 16 is considered an infinite distance and used to deprecate inaccessible, inoperable, or otherwise undesirable routes in the selection process.
+RIP implements the split horizon, route poisoning and holddown mechanisms to prevent incorrect routing information from being propagated. These are some of the stability features of RIP. It is also possible to use the so called RMTI (Routing Information Protocol with Metric-based Topology Investigation) algorithm to cope with the count-to-infinity problem. With its help, it is possible to detect every possible loop with a very small computation effort.
+Originally each RIP router transmitted full updates every 30 seconds. In the early deployments, routing tables were small enough that the traffic was not significant. As networks grew in size, however, it became evident there could be a massive traffic burst every 30 seconds, even if the routers had been initialized at random times. It was thought, as a result of random initialization, the routing updates would spread out in time, but this was not true in practice. Sally Floyd and Van Jacobson showed in 1994 that, without slight randomization of the update timer, the timers synchronized over time. In most current networking environments, RIP is not the preferred choice for routing as its time to converge and scalability are poor compared to EIGRP, OSPF, or IS-IS (the latter two being link-state routing protocols), and (without RMTI) a hop limit severely limits the size of network it can be used in. However, it is easy to configure, because RIP does not require any parameters on a router unlike other protocols (see here for an animation of basic RIP simulation visualizing RIP configuration and exchanging of Request and Response to discover new routes).
+RIP uses the User Datagram Protocol (UDP) as its transport protocol, and is assigned the reserved port number 520.
+
+There are three versions of the Routing Information Protocol: RIPv1, RIPv2, and RIPng.
+<h3>RIP version 1</h3>
+The original specification of RIP, defined in RFC 1058, uses classful routing. The periodic routing updates do not carry subnet information, lacking support for variable length subnet masks (VLSM). This limitation makes it impossible to have different-sized subnets inside of the same network class. In other words, all subnets in a network class must have the same size. There is also no support for router authentication, making RIP vulnerable to various attacks.
+<h3>RIP version 2</h3>
+Due to the deficiencies of the original RIP specification, RIP version 2 (RIPv2) was developed in 1993 and last standardized in 1998. It included the ability to carry subnet information, thus supporting Classless Inter-Domain Routing (CIDR). To maintain backward compatibility, the hop count limit of 15 remained. RIPv2 has facilities to fully interoperate with the earlier specification if all Must Be Zero protocol fields in the RIPv1 messages are properly specified. In addition, a compatibility switch feature allows fine-grained interoperability adjustments.
+In an effort to avoid unnecessary load on hosts that do not participate in routing, RIPv2 multicasts the entire routing table to all adjacent routers at the address 224.0.0.9, as opposed to RIPv1 which uses broadcast. Unicast addressing is still allowed for special applications.
+(MD5) authentication for RIP was introduced in 1997.
+RIPv2 is Internet Standard STD56 (which is RFC 2453).
+Route tags were also added in RIP version 2. This functionality allows for routes to be distinguished from internal routes to external redistributed routes from EGP protocols..
+<h3>RIPng</h3>
+RIPng (RIP next generation), defined in RFC 2080, is an extension of RIPv2 for support of IPv6, the next generation Internet Protocol. The main differences between RIPv2 and RIPng are:
+Support of IPv6 networking.
+While RIPv2 supports RIPv1 updates authentication, RIPng does not. IPv6 routers were, at the time, supposed to use IPsec for authentication.
+RIPv2 allows attaching arbitrary tags to routes, RIPng does not;
+RIPv2 encodes the next-hop into each route entries, RIPng requires specific encoding of the next hop for a set of route entries.
+RIPng sends updates on UDP port 521 using the multicast group FF02::9.
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

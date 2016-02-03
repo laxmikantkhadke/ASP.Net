@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="format1.css" type="text/css">
+<title>ICMP</title>
+</head>
+<body style="background-color:white;">
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<h1 style="font-weight:900;text-align:center;">Internet Control Message Protocol <br/>(ICMP)</h1>
+<hr style="color:black;">
+<h2>Internet Control Message Protocol (ICMP)</h2>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+When you send data from one device to another remote device, the IP Datagram often travels through one or more routers. There can be errors at routers while they try to forward the IP Datagram to its final destination. The Internet Control Message Protocol (ICMP) protocol is used to report problems with delivery of IP Datagrams within an IP network. ICMP is also used for other diagnosis and troubleshooting functions.<br/>
+
+An Internet Control Message Protocol (ICMP) packet header is 8 Bytes long. The first four bytes always have the same meaning, and the contents of the remaining four depend on the ICMP packet type. An ICMP header follows the IP header in an IP packet and Internet Control Message Protocol (ICMP) is considered to be an integral part of IP.</p>
+
+<h3>The most common ICMP messages</h3>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+<u>Echo Request and Echo Reply:</u> Internet Control Message Protocol (ICMP) is often used during test the connectivity between devices. We can use the ping (Packet InterNet Grouper) command to check connectivity from one device with another device and the ping command is using Internet Control Message Protocol (ICMP). Ping command sends an IP datagram to the IP address of the device we are trying to check the connectivity and requests the destination device to return the data sent in a response datagram. Ping command uses Internet Control Message Protocol (ICMP) Echo Request and Echo Reply.<br/>
+
+<u>Source Quench:</u> If a device is sending large amounts of data to another remote device, the volume can flood the router with data. The router can use Internet Control Message Protocol (ICMP) to send a Source Quench message to the source IP to ask it to slow down the rate at which it is sending data.<br/>
+<u>Destination Unreachable:</u> If a router receives a datagram that cannot be delivered, Internet Control Message Protocol (ICMP) returns a Destination Unreachable message to the source IP.<br/>
+<u>Time Exceeded:</u> Internet Control Message Protocol (ICMP) sends this message to the source IP if a datagram is discarded because TTL reaches zero. One reason is the destination device is too many router hops away to reach with the current TTL value or a routing loop (An undesirable condition when the IP Datagrams loop infinitely between the routers, without reaching the destination).</p>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+Type and Code: The following table shows the values which are possible for the Type and Code fields in the Internet Control Message Protocol (ICMP) header.</p>
+
+                  <table style="font-family:times new roman, times,serif;font-weight:normal;" border="2" cellspacing="0" cellpadding="0" class="text" bgcolor="white" >
+                    <tr bgcolor="#5F8CCB">
+                      <td width="144"><p align="center">&nbsp;</p>
+                        <p align="center"><strong>Type</strong></p>
+                        <p align="center">&nbsp;</p></td>
+                      <td width="48"><p align="center"><strong>Code</strong></p></td>
+                      <td width="336"><p align="center"><strong>Description</strong></p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">0</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Echo reply (used to ping)</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">1 and 2</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Reserved</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144" rowspan="14"><p align="center">3</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Destination network    unreachable</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">1</p></td>
+                      <td width="336"><p align="center">Destination host    unreachable</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">2</p></td>
+                      <td width="336"><p align="center">Destination protocol    unreachable</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">3</p></td>
+                      <td width="336"><p align="center">Destination port    unreachable</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">4</p></td>
+                      <td width="336"><p align="center">Fragmentation required,    and DF set</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">5</p></td>
+                      <td width="336"><p align="center">Source route failed</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">6</p></td>
+                      <td width="336"><p align="center">Destination network    unknown</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">7</p></td>
+                      <td width="336"><p align="center">Destination host unknown</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">8</p></td>
+                      <td width="336"><p align="center">Source host isolated</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">9</p></td>
+                      <td width="336"><p align="center">Network administratively    prohibited</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">10</p></td>
+                      <td width="336"><p align="center">Host administratively    prohibited</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">11</p></td>
+                      <td width="336"><p align="center">Network unreachable for Type Of Service</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">12</p></td>
+                      <td width="336"><p align="center">Host unreachable for Type Of Service</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">13</p></td>
+                      <td width="336"><p align="center">Administratively prohibited</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">4</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Traffic Congestion    Control</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144" rowspan="4"><p align="center">5</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Redirect Datagram for the    Network</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">1</p></td>
+                      <td width="336"><p align="center">Redirect Datagram for the    Host</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">2</p></td>
+                      <td width="336"><p align="center">Redirect Datagram for the    Type Of Service &amp; network</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">3</p></td>
+                      <td width="336"><p align="center">Redirect Datagram for the    Type Of Service &amp; host</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">6</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Alternate Host Address</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">7</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Reserved</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">8</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Echo request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">9</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Router Advertisement</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">10</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Router    discovery/selection/solicitation</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144" rowspan="2"><p align="center">11</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">TTL expired</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">1</p></td>
+                      <td width="336"><p align="center">Fragment reassembly time    exceeded</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144" rowspan="3"><p align="center">12</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Pointer indicates the    error</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">1</p></td>
+                      <td width="336"><p align="center">Missing a required option</p></td>
+                    </tr>
+                    <tr>
+                      <td width="48"><p align="center">2</p></td>
+                      <td width="336"><p align="center">Bad length</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">13</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Timestamp</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">14</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Timestamp reply</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">15</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Information Request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">16</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Information Reply</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">17</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Address Mask Request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">18</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Address Mask Reply</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">19</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Reserved for security</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">20 through 29</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Reserved for robustness    experiment</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">30</p></td>
+                      <td width="48"><p align="center">0</p></td>
+                      <td width="336"><p align="center">Information Request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">31</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Datagram Conversion Error</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">32</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Mobile Host Redirect</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">33</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Where-Are-You</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">34</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Here-I-Am</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">35</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Mobile Registration    Request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">36</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Mobile Registration Reply</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">37</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Domain Name Request</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">38</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Domain Name Reply</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">39</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">SKIP Algorithm Discovery    Protocol</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">40</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Photuris, Security failures</p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">41</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">ICMP for experimental    mobility protocols such as Seamoby </p></td>
+                    </tr>
+                    <tr>
+                      <td width="144"><p align="center">42 through 255</p></td>
+                      <td width="48"><p align="center">&nbsp;</p></td>
+                      <td width="336"><p align="center">Reserved</p></td>
+                    </tr>
+                  </table>
+
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+<u>Checksum:</u> The checksum field in the Internet Control Message Protocol (ICMP) message contains error checking data calculated from the Internet Control Message Protocol (ICMP) header+data, with value 0 for this field.<br/>
+
+<u>ID:</u> The ID field in the Internet Control Message Protocol (ICMP) message contains an ID value, should be returned in case of ECHO REPLY.<br/>
+
+<u>Sequence number:</u> The sequence number field in the Internet Control Message Protocol (ICMP) message is the sequence number for each host, generally this starts at 1 and is incremented by 1 for each packet.</p>
+
+
+
+
+<hr style="color:black;">
+<a href="osinew.htm"><img src="Left%20Arrow.png" width="50" height=
+"50" align="right" alt="Back"></a></div>
+</body>
+</html>

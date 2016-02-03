@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FR</title>
+<style>
+body
+{
+background-color:white;
+}
+<link rel="stylesheet" href="format1.css">
+</style>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<b>
+<center>
+<h1>
+Frame Relay</br>FR 
+</h1>
+</center>
+</b>
+<hr color="black">
+
+<h3>Overview</h3>
+Frame relay is an emerging data communication concept sanctioned by
+ITU-T and ANSI. It is fast packet technology developed to improve upon 
+the X.25 packet technology. The development of fast packet was possible
+after emergence of various technologies. Frame relay gets its name from 
+the frame designation of the OSI data link layer. It was essentilly 
+developed through two technologies.
+<ul>
+<li>Widespread development of optical fiber-based transmission.</li>
+<li>Intelligent customer premises equipment (CPE).</li>
+</ul>
+The frame relay protocol supports data transmission over connection-oriented paths.
+The interface from the user to the frame relay network is called frame relay interface
+(FRI). FRI currently supports the following access speeds:
+<ul>
+<li>56kbps</li>
+<li>n X 64 kbps</li>
+<li>1.544 Mbps (T1)</li>
+<li>2.048 Mbps (E1) </li>
+</ul>
+In addition, there are some intermediate speeds, but the highest is T1 or E1.
+<br/>
+FRI is an enhanced version of X.25 without error correction at the intermediate nodes. 
+Error corrections in a frame relay network occure in the intelligent CPE at either end 
+of the connection, thus making frame relay much faster than X.25. Frame relay relies on
+ the equipment to perform the functions done by network. Advances in transmission 
+technology and, of course, the terminal equipment has allowed this change to occure.
+These advances have made frame relay a standard in data communications from 56kbps to 
+T1- or E1-based applications and is slowly replacing the X.25 based packet switched network. 
+For speed below 56kbps, the packet-switched network is still ideal.
+<br/>
+<h3>Frame Relay Standards</h3>
+The ITU-T has divided the functions and features of frame relay into three major standards.
+<br/>
+<table width="500" border="1" bgcolor="white">
+<tr>
+	<th>Standards Categories</th>
+	<th>ITU-T standards</th>
+	<th> ANSI standards</th>
+</tr>
+<tr>
+	<td>Service Description</td>
+	<td>I.233</td>
+	<td>T1.606</td>
+</tr>
+<tr>
+	<td>Core aspects</td>
+	<td>Q.922</td>
+	<td>T1.618</td>
+</tr>
+<tr>
+	<td>Signaling</td>
+	<td>Q.933   </td>
+	<td>T1.617</td>
+</tr>
+</table>
+ 
+<h3>Frame Relay Field Format</h3>
+Folowing fig shows the basic format of frame relay field.<br/><br/>
+<img src="fr.gif" height="121" width="386">
+<br/>
+The frame relay format has five different fields, eachof varying lengths.
+These fields are
+<ul>
+<li>Flag field</li>
+<li>Frame relay header </li>
+<li>Information Field</li>
+<li>Frame check sequence field</li>
+<li>Trailing Flag field</li>
+</ul>
+Each of these fields isresponsible for specific function. 
+
+<h4>DLCI</h4>
+10-bit DLCI field represents the address of the frame and corresponds to a PVC.
+
+<h4>C/R</h4>
+Designates whether the frame is a command or response.
+
+<h4>EA</h4>
+Extended Address field signifies up to two additional bytes in the Frame Relay header, thus greatly expanding the number of possible addresses.
+
+<h4>FECN</h4>
+Forward Explicit Congestion Notification.
+
+<h4>BECN</h4>
+Backward Explicit Congestion Notification.
+
+<h4>DE</h4>
+Discard Eligibility.
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

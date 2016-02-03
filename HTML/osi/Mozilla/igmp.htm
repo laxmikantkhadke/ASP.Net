@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<link rel="stylesheet" href="format1.css" type="text/css">
+<title>IGMP</title>
+</head>
+<body style="background-color:gold;">
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<h1 style="font-weight:900;text-align:center;">Internet Group Management Protocol <br/>(IGMP)</h1>
+<hr style="color:black;">
+<h2>Internet Group Management Protocol (IGMP)</h2>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+The Internet Group Management Protocol (IGMP) is a communications protocol used by hosts and adjacent routers on IP networks to establish multicast group memberships. IGMP is an integral part of IP multicast.</p>
+
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+IGMP can be used for one-to-many networking applications such as online streaming video and gaming, and allows more efficient use of resources when supporting these types of applications.IGMP is used on IPv4 networks.</p>
+
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+There are three versions of IGMP, as defined by Request for Comments (RFC) documents of the Internet Engineering Task Force (IETF). <b>IGMPv1</b> is defined by <b>RFC 1112</b>, <b>IGMPv2</b> is defined by <b>RFC 2236</b> and <b>IGMPv3</b> was initially defined by <b>RFC 3376</b> and has been updated by <b>RFC 4604</b> which defines both IGMPv3 and MLDv2. IGMPv2 improves over IGMPv1 by adding the ability for a host to signal desire to leave a multicast group.</p>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">IGMPv3 improves over IGMPv2 mainly by adding the ability to listen to multicast originating from a set of source IP addresses only.</p>
+
+<h3>Packet structure</h3>
+IGMP messages are carried in bare IP packets with IP protocol number 2. There is no transport layer used with IGMP messaging, similar to Internet Control Message Protocol for example.
+
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+IGMPv3 membership queryMembership Queries are sent by multicast routers to determine which multicast addresses are of interest to systems attached to its network. Routers periodically send General Queries to refresh the group membership state for all systems on its network. Group-Specific Queries are used for determining the reception state for a particular multicast address. Group-and-Source-Specific Queries allow the router to determine if any systems desire reception of messages sent to a multicast group from a source address specified in a list of unicast addresses.</p>
+
+
+
+
+
+
+<hr style="color:black;">
+<a href="osinew.htm"><img src="Left%20Arrow.png" width="50" height=
+"50" align="right" alt="Back"></a></div>
+</body>
+</html>

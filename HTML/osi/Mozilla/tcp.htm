@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<link rel="stylesheet" href="format1.css" type="text/css">
+<title>TCP</title>
+</head>
+<body style="background-color:gold;">
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<h1 style="font-weight:900;text-align:center;">Transport Control Protocol<br/>(TCP)</h1>
+<hr style="color:black;">
+<h1>TCP</h1>
+Transmission Control Protocol is a Transport Layer host-to-host
+protocol that provides reliable, connection-oriented communication
+over IP networks.
+<ol>
+	<li style="font-weight:bold;">Transmission Control Protocol Characteristics
+	<ul>
+	<li>TCP Data Transfer
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">
+Once the three-way handshake completes and connection is established, TCP signals the Application Layer to begin data
+transfer and communication. TCP handles that data transfer as follows: TCP breaks up messages from applications using protocols
+like HTTP, SMTP and POP3 (email) and FTP into segments. TCP then transmits the segments (message pieces) to the remote hosts TCP on
+the remote host reassembles the segments even if they are received out of order. TCP segments the Application Layer data, lables the
+data and passes the data down the protocol stack to the Network, Data Link and Physical layers. Because the host receiving TCP
+segments always sends ACKnowledgements to the sender, TCP always knows the state of the connection.</p>
+	</li>
+	<li>TCP Reliability
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">TCP provides for the recovery of segments that get lost, are damaged,
+duplicated or received out of their correct order. TCP is described as a 'reliable' protocol because it attempts to recover from these
+errors. The sequencing is handled by labling every segment with a sequence number. These sequence numbers permit TCP to detect
+dropped segments. TCP also requires that an acknowledge message be returned after transmitting data. To verify that the segments are
+not damaged, a CRC check is performed on every segment that is sent, and every segment that is received. Because every packet has
+a time to live field, and that field is decremented during each forwarding cycle, TCP must re-calculate the CRC value for the
+segment at each hop. Segments that do not match the CRC check are discarded.</p>
+	</li>
+	<li>TCP Flow Control
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">Flow control is the process of managing the rate at which data is
+transmitted. Using flow control, a computer receiving data can signal that it is not ready to receive data. TCP provides a flow
+control mechanism using acknowlegements of TCP sequence numbers.</p>
+	</li>
+	<li>TCP Multiplexing
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">
+Multiplexing is the process of combining two or more data streams
+into a single physical connection. TCP provides multiplexing
+facilities by using source and destination port numbers. These port
+numbers allow TCP to set up a number of virtual connections over a
+physical connnection and multiplex the data stream through that
+connection. Typically, a transmitting host will attempt to connect
+to a well-known port number at the destination host. A few examples
+of 'well known ports' of protocols that ride on top of TCP are:</p>
+		<ul>
+		<li>25&nbsp;&nbsp; - Simple Mail Transport Protocol (SMTP)</li>
+		<li>21&nbsp;&nbsp; - File Transfer Protocol</li>
+		<li>22&nbsp;&nbsp; - Secure Shell</li>
+		<li>23&nbsp;&nbsp; - Telnet</li>
+		<li>80&nbsp;&nbsp; - HTTP</li>
+		<li>443 - HTTPS</li>
+		</ul>
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">The
+transmitting station will use a source port that is some arbitrary
+number above 1023. Each source and destination port pairing
+identifies a separate virtual connection, allowing multiple
+connections to share one physical network connection.</p>
+	</li>
+	<li>TCP Connection Oriented Communication
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">TCP
+functions by opening connections to a remote computer. This is
+called connection-oriented communication. TCP maintains status
+information regarding the connections it makes and is therefore a
+reliable protocol. A single TCP connection is identified by
+combination of IP addresses and virtual port numbers used by both
+ends. During communication, additional numbers are used to keep
+track of the order or sequence in which the data segments are
+transmitted. The sequence number indicates what order the segments
+of data should be reassembled. Finally, a maximum transmission size
+is constantly being negotiated via a fallback mechanism called
+windowing. The combination of port numbers, sequence numbers and
+window sizes constitutes a connection, or pipe. For example, when
+you use your browser to open a website you are opening a TCP
+connection from your browser to the website. Your local computer
+uses an IP addresses and a virtual port number ot identify itself.
+Your computer opens a connection to the server on port 80 (the
+well-known port for HTTP, the protocol web pages are delivered on.
+To establish a connection, TCP uses the three-way handshake
+(SYN-SYN-ACK). This three-way handshake will only be completed in
+one direction even if both sides initialize TCP socket connections
+at the same time.</p>
+	</li>
+	<li>TCP Precedence and Security
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">The
+three highest order bits in the Type of Service field are set aside
+for Priority. The priority function is provided to allow TCP to
+mark certain packets as higher priority. Packets with higher
+priority will get forwarded first. In addition, a provision is made
+to allow for compression and encryption of the TCP headers. All of
+these functions are signalled by a set of flags in the TCP
+header.</p>
+	</li>
+	</ul>
+	</li>
+	<li style="font-weight:bold;">Transmission Control Protocol
+Operation
+		<ul>
+		<li>TCP Segmentation
+		<p style="font-family:times new roman, times, serif;font-weight:normal;">
+		</p>
+		<h3 style="font-family:times new roman, times, serif;font-weight:bold;">TCP
+Segmentation</h3>
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">
+Segmentation is the process of carving up information into smaller
+pieces. The documentation for Transmission Control Protocol (TCP)
+refrers to what it calls 'data streams'. A data stream is really
+nothing more than a series of zeroes and ones that represent
+information. TCP receives data from an application and segments the
+data into pieces. This segmentation is necessary so that the
+information can be placed inside the TCP data field. Once the data
+is segmented it is encapsulated within TCP. The TCP segment and TCP
+header is then passed down to Internet Protocol which stuffs the
+TCP segment and header into the payload of the IP datagram. By
+segmenting the data, TCP creates chunks of data that can be routed
+separately over whatever connections are needed in order to reach
+the destination. Any of these segments can be retransmitted to
+replace the original segmentst that got lost or damaged in
+transmission.</p>
+		<h3 style="font-family:times new roman, times, serif;font-weight:bold;">TCP
+Reassembly</h3>
+	<p style="font-family:times new roman, times, serif;font-weight:normal;">TCP
+reassembles segments into a data stream and feeds that data stream
+to the application. The best known example of this activity is HTTP
+transfer of a web page. The web server loads a web page from disk,
+encapsulates the web page text in HTTP headers, the passes the HTTP
+encoded stream of text to TCP. TCP segments the text stream for
+transport across the network. The networking software (the stack)
+receives the TCP data segments and reassembles the HTTP stream of
+text, which your web browser reads, and renders as a web page.</p>
+		</li>
+		<li>TCP Connection Establishment
+		<p style="font-family:times new roman, times, serif;font-weight:normal;">TCP
+functions by opening connections to a remote computer. This is
+called connection-oriented communication. TCP maintains status
+information regarding the connections it makes and is therefore a
+reliable protocol. A single TCP connection is identified by
+combination of IP addresses and virtual port numbers used by both
+ends. During communication, additional numbers are used to keep
+track of the order or sequence in which the data segments are
+transmitted. The sequence number indicates what order the segments
+of data should be reassembled. Finally, a maximum transmission size
+is constantly being negotiated via a fallback mechanism called
+windowing. The combination of port numbers, sequence numbers and
+window sizes constitutes a connection, or pipe. For example, when
+you use your browser to open a website you are opening a TCP
+connection from your browser to the website. Your local computer
+uses an IP addresses and a virtual port number ot identify itself.
+Your computer opens a connection to the server on port 80 (the
+well-known port for HTTP, the protocol web pages are delivered on.
+To establish a connection, TCP uses the three-way handshake
+(SYN-SYN-ACK). This three-way handshake will only be completed in
+one direction even if both sides initialize TCP socket connections
+at the same time.</p>
+<ul>
+<li>Synchronization</li>
+<li>3-Way Handshake
+<p style=
+"font-family:times new roman, times,serif;font-weight:normal;">The
+TCP three-way handshake in Transmission Control Protocol (also
+called the TCP-handshake; three message handshake and/or
+SYN-SYN-ACK) is the method used by TCP set up a TCP/IP connection
+over an Internet Protocol based network. TCP's three way
+handshaking technique is often referred to as "SYN-SYN-ACK" (or
+more accurately SYN, SYN-ACK, ACK) because there are three messages
+transmitted by TCP to negotiate and start a TCP session between two
+computers. The TCP handshaking mechanism is designed so that two
+computers attempting to communicate can negotiate the parameters of
+the network TCP socket connection before transmitting data such as
+SSH and HTTP web browser requests. This 3-way handshake process is
+also designed so that both ends can initiate and negotiate separate
+TCP socket connections at the same time. Being able to negotiate
+multiple TCP socket connections in both directions at the same time
+allows a single physical network interface, such as ethernet, to be
+multiplexed to transfer multiple streams of TCP data
+simultaneously.</p>
+</li>
+</ul>
+</li>
+<li>TCP Reliable Transmission</li>
+<li>TCP Connection Teardown</li>
+<li>TCP Reassembly</li>
+</ul>
+</li>
+<li style="font-weight:bold;">Transmission Control Protocol Packet
+Structure
+<ul>
+<li>TCP Header
+<p style="font-family:times new roman, times,serif;font-weight:normal;">The
+Transmission Control Protocol (TCP) header is the first 24 bytes of
+a TCP segment that contains the parameters and state of an
+end-to-end TCP socket. The TCP header is used to track the state of
+communication between two TCP endpoints. Since TCP segments are
+inserted (encapsulated) in the payload of the IP packet the TCP
+header immediately follows the IP header during transmission. TCP
+does not need to keep track of which systems are communicating, it
+only needs to track which end to end sockets are currently open.
+Internet Protocol handles the logical addressing, routing and
+host-to-host connectivity. TCP uses port numbers on each side of
+the connection to track the connection endpoints, state bits such
+as SYN, ACK, RST, FIN, sequence numbers and acknowledgement numbers
+to track the communication at each step in transmission.</p>
+</li>
+<li>Payload Carries Upper Layer Protocols</li>
+</ul>
+</li>
+</ol>
+<hr style="color:black;">
+<a href="osinew.htm"><img src="Left%20Arrow.png" width="50" height=
+"50" align="right" alt="Back"></a></div>
+</body>
+</html>

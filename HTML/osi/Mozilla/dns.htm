@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="format1.css">
+<title>DNS</title>
+</head>
+
+<body bgcolor="gold">
+
+<div id="container"  style="width:80%;margin-left:auto;margin-right:auto;">
+
+
+
+<u>
+<center>
+<h1 style="font-weight:900;">
+Domain Name System </br> DNS
+</h1>
+</center>
+</u>
+
+<hr color="black">
+<p>
+<h3>DNS Protocol Overview</h3>
+
+Part of the confusion associated with the DNS protocol is that it lacks a special name. Thus DNS can refer either to the entire system, or to the protocol that makes it work. This page documents the protocol, which operates in one of two basic modes - lookups or zone transfers.
+
+<h3>DNS Lookups</h3>
+
+Normal resource records lookups are done with UDP. An "intelligent retransmission" is to be used, though one is not specified in the protocol, resulting in a mix of poor strategies with good ones. The protocol itself is stateless; all the information needed is contained in a single message, fully documented in RFC 1035 §4.1, and having the following format:
+<PRE >
+    +---------------------+
+    |        Header       |
+    +---------------------+
+    |       Question      | the question for the name server
+    +---------------------+
+    |        Answer       | RRs answering the question
+    +---------------------+
+    |      Authority      | RRs pointing toward an authority
+    +---------------------+
+    |      Additional     | RRs holding additional information
+    +---------------------+
+</PRE>
+Questions are always Name, Type, Class tuples. For Internet applications, the Class is IN, the Type is a valid RR type, and the Name is a fully-qualified domain name, stored in a standard format. Names can't be wildcarded, but Types and Classes can be. In addition, special Types exist to wildcard mail records and to trigger zone transfers. The question is the only section included in a query message; the remaining sections being used for replies.
+Answers are RRs that match the Name, Type, Class tuple. If any of the matching records are CNAME pointers leading to other records, the target records should also be included in the answer. There may be multiple answers, since there may be multiple RRs with the same labels.
+Authority RRs are type NS records pointing to name servers closer to the target name in the naming hierarchy. This field is completely optional, but clients are encouraged to cache this information if further requests may be made in the same name hierarchy.
+Additional RRs are records that the name server believes may be useful to the client. The most common use for this field is to supply A (address) records for the name servers listed in the Authority section.
+However, more clever name servers are feasible. For example, if the question is for an MX record for FreeSoft.org, the answer will currently point to mail.adnc.com. The name server can infer that the client's next request will be an A query for mail.adnc.com, which will be answered by with a CNAME record, the DNS equivalent of a symbolic link, and the target of that link, an A record for gemini.adnc.com. The name server can avoid all this extra traffic by just including the CNAME and A records as additional RRs in the original reply. Not all name servers do this, however. Use the Dig program to watch what really happens.
+
+<h3>Zone Transfers</h3>
+
+Sometimes, it is necessary to efficiently transfer the resource records of an entire DNS zone. This is most commonly done by a secondary name server having determined the need to update its database.
+
+The operation of a zone transfer is almost identical to a normal DNS query, except that TCP is used (due to large quantity of reply records) and a special Class exists to trigger a zone transfer. A DNS query with Name=FreeSoft.org, Class=IN, Type=AXFR will trigger a zone transfer for FreeSoft.org. The end of a zone transfer is marked by duplicating the SOA RR that started the zone.
+<br/>
+Zone transfers are discussed in more detail in RFC 1034 §4.3.5.
+<br/>
+<h3>Lower-Level Transport</h3>
+
+Either TCP or UDP can be used to transport DNS protocol messages, connecting to server port 53 for either. Ordinary DNS requests can be made with TCP, though convention dictates the use of UDP for normal operation. TCP must be used for zone transfers, however, because of the danger of dropping records with an unreliable delivery protocol such as UDP.
+<br/>
+</p>
+
+<hr>
+
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,501 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<title>Laxmikant Khadke</title>
+
+</head>
+<body style="background-color:white;">
+
+<div id="container" style="background-color:white;width:1200px;"></div>
+<div id="header" style="background-color:#FFA500;">
+<center>
+<h1 style="margin-bottom:0;">OSI Layers</h1>
+</center>
+</div>
+<script>
+if (!document.layers)
+document.write('<div id="divStayTopLeft" style="position:absolute">')
+</script>
+
+<layer id="divStayTopLeft">
+
+
+<div id="my_menu" style="background-color:#E5F2FF;height:650px;width:200px;float:left;">
+<b>LAYERS</b><br>
+<p><a href="#appl" style="text-decoration:none;">APPLICATION</a><br>
+<br>
+<br>
+<a href="#pres" style="text-decoration:none;">PRESENTATION</a><br>
+<br>
+<br>
+<a href="#sess" style="text-decoration:none;">SESSION</a><br>
+<br>
+<br>
+<a href="#tran" style="text-decoration:none;">TRANSPORT</a><br>
+<br>
+<br>
+<a href="#netw" style="text-decoration:none;">NETWORK</a><br>
+<br>
+<br>
+<a href="#data" style="text-decoration:none;">DATA LINK</a><br>
+<br>
+<br>
+<a href="#phys" style="text-decoration:none;">PHYSICAL</a><br>
+<br>
+<br>
+<a href="osinew.htm" style="text-decoration:none;">TCP/IP and OSI</a></p>
+</div>
+</layer>
+
+<script type="text/javascript">
+
+/*
+Floating Menu script-  Roy Whittle (http://www.javascript-fx.com/)
+Script featured on/available at http://www.dynamicdrive.com/
+This notice must stay intact for use
+*/
+
+//Enter "frombottom" or "fromtop"
+var verticalpos="frombottom"
+
+if (!document.layers)
+document.write('</div>')
+
+function JSFX_FloatTopDiv()
+{
+	var startX = 5,
+	startY = 480;
+	var ns = (navigator.appName.indexOf("Netscape") != -1);
+	var d = document;
+	function ml(id)
+	{
+		var el=d.getElementById?d.getElementById(id):d.all?d.all[id]:d.layers[id];
+		if(d.layers)el.style=el;
+		el.sP=function(x,y){this.style.left=x;this.style.top=y;};
+		el.x = startX;
+		if (verticalpos=="fromtop")
+		el.y = startY;
+		else{
+		el.y = ns ? pageYOffset + innerHeight : document.body.scrollTop + document.body.clientHeight;
+		el.y -= startY;
+		}
+		return el;
+	}
+	window.stayTopLeft=function()
+	{
+		if (verticalpos=="fromtop"){
+		var pY = ns ? pageYOffset : document.body.scrollTop;
+		ftlObj.y += (pY + startY - ftlObj.y)/8;
+		}
+		else{
+		var pY = ns ? pageYOffset + innerHeight : document.body.scrollTop + document.body.clientHeight;
+		ftlObj.y += (pY - startY - ftlObj.y)/8;
+		}
+		ftlObj.sP(ftlObj.x, ftlObj.y);
+		setTimeout("stayTopLeft()", 10);
+	}
+	ftlObj = ml("divStayTopLeft");
+	stayTopLeft();
+}
+JSFX_FloatTopDiv();
+</script>
+
+<div id="Layers" style="background-color:white;height:6300px;width:200px;float:left;"></div>
+<div style="float: left;"></div>
+<div id="content" style="background-color:white;height:3300px;width:1000px;float:left;">
+<h2><a id="appl" name="appl">Application Layer</a></h2>
+<div align="justify">The Application Layer is at top of the OSI model. It is ultimate
+goal of networking: service providing. The Application Layer uses
+special networking protocols to provide file, print, message,
+application, and database services. It also defines how these
+services are advertised and used. The Application Layer performs
+two very important tasks:
+</div>
+<ul>
+<li><strong>Service advertisement</strong>
+<div align="justify">
+Servers advertise what network services they provide to network clients. They are such as service addresses, provide the underlying mechanisms by which each service is identified. In addition, servers use the following different service advertisement methods:
+</div>
+<ul>
+<li><strong>Active</strong>
+<div align="justify">
+When performing active service advertisement, each server sends out periodic messages (including service addresses) to announce its availability. Client can also poll the devices on the network looking for a type service. Network clients collect advertisements and build tables of currently available services.
+<br/>
+Most networks that use the active advertisement method also specify a specific time interval for the validity of the service advertisement. For example, if the network protocol specifies that service advertisements must be sent out every five minutes, clients will time out or remove those services that have not advertised in the last five minutes. Upon timeout, the client removes the service from its service table. 
+</div>
+</li>
+<li><strong>Passive</strong>
+<div align="justify">
+Servers perform passive service advertisement by registering their service and address with the directory. When clients want to identify which services are available, they simply ask the directory to locate the service and provide the service address.
+</div>
+</li>
+</ul>
+</li>
+<li><strong>Service availability</strong>
+<div align="justify">
+Before a network service can be used, it has to make itself available to the computer's local operating system. A variety of methods exist to achieve this task, but each method can be defined by the location or level at which the local operating system becomes aware of the network operating system. The following three categories classify service use methods:
+</div>
+<ul>
+<li><strong>OS Call Interception</strong>
+<div align="justify">
+When using OS call interception, the local operating system is completely unaware of the existence of network services. For example, when a DOS application attempts to read a file from a network file server, the application thinks that the file is available from local storage device. Actually, a special piece of software intercepts the file read request before it reaches the local operating system (DOS) and sends out a request for network file services.
+</div>
+</li>
+<li><strong>Remote Operation</strong>
+<div align="justify">
+At the other extreme with remote operation, the local operating system is aware of the network and is responsible for submitting requests for network services. However, the server is unaware of the client. All requests for services appear the same to the server's operating system whether they were generated internally or across the network.
+</div>
+</li>
+<li><strong>Collaborative computing</strong>
+<div align="justify">
+Finally, they are operating systems that arre network aware. Both the service requestor and the service provider recognize the existence of the other and work together to coordinateservice use. This type of service use is typically required to perform peer-to-peer collaborative computing. 
+<br/>
+Collaborative computing involves the sharing of processing abilities to accomplish a single task. This means that each operating system must be aware of the existence and abilities of others and be able to cooperate on the completionof the task.
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a id="pres" name="pres">Presentation Layer</a></h2>
+<div align="justify">
+The Presentation Layer is the OSI translator. It performs the
+upper-layer message into mutually agreed-upon format. AT this
+point, the dialogue is open and data transfer has begun, but before
+the Application Layer can read the message, the Presentation Layer
+must take care of two things:
+</div>
+<ul>
+<li><strong>Translation</strong>
+<div align="justify">
+Computers use many rules to make binary 0s and 1s to represent data. While all of these rules attempt to accomplish the same purpose to represent data that human understand. Computer manufacturers and standards organisations have created rules that conflict with each other. When two computers that use different rule sets attempt to communicate they must often perform some type of translation. The following types of translation are discussed in this subsection : 
+</div>
+<ul>
+<li><strong>Bit order</strong>
+<div align="justify">
+Bit Order refers to a binary number (1110011). The two conversing devices must agree on the order of the bits being transferred. Meaning, which end of the binary number is the Most Significant Bit (MSB) and which is the Least Significant Bit (LSB). Therefore the receiving device knows which end of the number to start on, left or right.
+</div>
+</li>
+<li><strong>Byte order</strong>
+<div align="justify">
+Different types of computers often group different numbers of bytes in different orders to produce data. For example, 
+<br/>
+<strong>Intel</strong> microprocessors starts with the Least Significant Byte. - "Little Endian" (or reverse-byte ordering) method for representing complex numbers.
+<br/>
+<strong>Motorola</strong> microprocessor starts with the Most Significant Byte. - "Big Endian"
+<br/>
+When computers that use different byte ordering methods attempt to communicate, the Presentation layer must perform byte order translation. 
+</div>
+</li>
+<li><strong>Character-code</strong>
+<div align="justify">
+Most computer use one of three binary numbering systems to represent character sets. They are :
+<ul>
+<li><strong>ASCII</strong> - American Standard Code for Information Interchange, representing English on all microcomputers and most minicomputer.</li>
+<li><strong>EBCDIC</strong> - Extended Binary Coded Decimal Interchange Code, represents English on IBM mainframes.</li>
+<li><strong>Shift-JIS </strong>- Japanese Characters.</li>
+</ul>
+</div>
+</li>
+<li><strong>File syntax</strong>
+<div align="justify">
+Most modern computer networks are heterogenous. They incorporate a multitude of local and network operating systems, each of which may dictate a different file syntax or format. When these disparate systems attempt to share data files, the file syntax must be translated to the required formats. Network operating systems are often required to extract the data and file characteristics from one file system and convert them for another file system across the network. 
+</div>
+</li>
+</ul>
+</li>
+<li><strong>Encryption</strong>
+<div align="justify">
+Local and network operating systems will often encrypt data to protect it from unauthorized use. Encryption is general term that describes methods of scrambling data. Data scrambling is often performed using one or more of the following three methods:
+<br/>
+1. &nbsp;&nbsp;&nbsp; Transposition <br/>
+2. &nbsp;&nbsp;&nbsp; Substitution <br/>
+3. &nbsp;&nbsp;&nbsp; Algebraic <br/>
+<div align="justify">
+However, each of these methods is simply a different way to scramble data so that it can only be understood by individuals who also know the encryption algorithm. Data encryption can be performed by hardware or software. However, end-to-end data encryption is typicallyperformed by software and is considered part of the OSI Presentation layer. The following two methods arre commonly used to notify entities of the encryption method being used:
+</div>
+<ul>
+<li><strong>Private Key</strong>
+<div align="justify">
+<em>Private key</em> methods use only one key. Network entities that have the key are able to encrypt and decrypt every message. Therefore, the key has to be kept private. The key can be imbedded in hardware chipset or be established by network administrators. However, every time the key is changed, all of the devices must be updated (preferably not using the network to pass the new key).
+</div>
+</li>
+<li><strong>Public Key</strong>
+<div align="justify">
+Network entities using <em>Public Key</em> methods are provided a secret key and a known value. An entity creates a public key by manipulating the known value by the value of the secret key. The entity that initiates communication sends its public key to the receiver(s). The other entity then mathematically combines its combines its own secret key with the provided public keyto establish the mutually agreeable encryption value.
+<br/>
+&nbsp;&nbsp;&nbsp;Having only the public key is of little help to unauthorized users. The complexity of the resultant encryption key is too complex to be calculated in reasonable amount of time. As it turns out, even knowing your own secret key and a public key from someone else does not dramatically help you calculate their secret due to the complexity of logarithmic calculations for large numbers. However, because additional computational power or mathematic shortcuts may eventually be developed, new encryptionschemes are being worked on.
+</div> 
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h2><a id="sess" name="sess">Session Layer</a></h2>
+<div align="justify">
+The Session Layer facilitates communication between service requestors and providers. Comunication sessions are controlled through mechanisms that establish, maintain, synchronize, and manage dialog between communication entities. Often, this layer also helps the upper layers identify and connect to the services that are available on the network.<br/>
+The Session layer could be compared to telephone operators and telephone directory services.  
+</div>
+<ul>
+<li><strong>Dialog Control</strong>
+<div align="justify">
+There are three dialog control modes that define the direction in which data can flow. They are :
+</div>
+<ul>
+<li><strong>Simplex</strong>
+<div align="justify">
+Simplex dialog allows communications on the transmission channel to occur in one direction. Only one device is allowed to transmit; all other device simply receive. The channel's full bandwidth is always available for signals travelling from the transmitter to the receiver(s). On a simplex channel, the transmitting device cannot receive information, and the receiving device(s) cannot transmit.
+</div>
+</li>
+<img src="simplex.jpg"/>
+<li><strong>Half-duplex</strong>
+<div align="justify">
+Using half-duplex dialog, each device can both transmit and receive, but only one device can transmit at a time. The channel's bandwidth is available to the transmitting device (which can not receive while it is transmitting). Use of the channel by one device is limited by use of the other devices.
+</div>
+</li>
+<img src="half duplex1.jpg" />
+
+<li><strong>Full-duplex</strong>
+<div align="justify">
+
+</div>
+</li>
+<img src="full duplex.jpg"/>
+</ul>
+</li>
+<li><strong>Session Administration</strong>
+<ul>
+<li><strong>Connection establishment</strong></li>
+<li><strong>Data Transfer</strong>
+
+</li>
+<li><strong>Connection Release</strong></li>
+</ul>
+</li>
+</ul>
+<h2><a id="tran" name="tran">Transport Layer</a></h2>
+The Transport Layer organizes datagrams into segments and delivers
+them reliably to upper-layer services. If segments are not
+delivered to the destination correctly by the Network Layer,
+transport functions come to the rescue. This layer can initiate
+retransmissions and inform the upper layers that we are trying
+again. Transport Layer consists of the following components:<br>
+<ul>
+<li>Service addressing
+<ul>
+<li>Connection identifier</li>
+<li>Transaction identifier</li>
+</ul>
+</li>
+<li>Segmentation</li>
+<li>Transport Control
+<ul>
+<li>Transport error checking</li>
+<li>Transport flow control</li>
+</ul>
+</li>
+</ul>
+<h2><a id="netw" name="netw">Network Layer</a></h2>
+The Network Layer is concerned primerily with moving data from
+Point A to Point B. Although this seems simple first, it can get
+quite complex as you begin internetworking over complex WANs.<br>
+The Network Layer has following functions:
+<ul>
+<li>Logical Addressing</li>
+<li>Switching
+<ul>
+<li>Circuit switching</li>
+<li>Message switching</li>
+<li>Packet switching
+<ul>
+<li>Datagram packet switching</li>
+<li>Virtual-circuit packet switching</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Routing
+<ul>
+<li>Route discovery
+<ul>
+<li>Distance-vector Route Discovery</li>
+<li>Link State Route Discovery</li>
+</ul>
+</li>
+<li>Route Selection
+<ul>
+<li>Dynamic</li>
+<li>Static</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Network Control
+<ul>
+<li>Network flow control</li>
+<li>Network sequencing</li>
+<li>Network error checking</li>
+</ul>
+</li>
+</ul>
+<h2><a id="data" name="data">Data link Layer</a></h2>
+<p>Data Link Layer organizes physical bits into logical groups
+called frames. These are contiguous series of bits grouped together
+as a unit of data. The Data Link Layer also detects, and sometimes
+corrects,errors. It controls data flow and identifies computers on
+the network through physical addressing.<br>
+Data Link layer is organized into two sublayers.</p>
+<ul>
+<li>Media Access Control(MAC)
+<ul>
+<li>Media Access protocols
+<ul>
+<li>Contention
+<ul>
+<li>CSMA/CD</li>
+<li>CSMA/CA</li>
+</ul>
+</li>
+<li>Token-passing</li>
+<li>Polling</li>
+</ul>
+</li>
+<li>Physical Addressing</li>
+</ul>
+</li>
+<li>Logical Link Control (LLC)
+<ul>
+<li>Frame Synchronization
+<ul>
+<li>Asynchronous</li>
+<li>Synchronous</li>
+<li>Isochronous</li>
+</ul>
+</li>
+<li>Flow Control
+<ul>
+<li>Window flow control</li>
+<li>Guaranteed rate flow control</li>
+</ul>
+</li>
+<li>Error Checking</li>
+</ul>
+<h2><a id="phys" name="phys">Physical Layer</a></h2>
+The Physical Layer defines the pathway for electronic
+communication. The Physical Layer handles low-level rules for
+transmitting bits.This layer encodes or decodes bits and sends or
+receives the stream of data. This is the pavement of the
+information superhighway. The Physical Layer Defines :
+<ul>
+<li>Electrical Properties
+<ul>
+<li>Resistance</li>
+<li>Impedance</li>
+<li>Capacitance</li>
+<li>Noise</li>
+<li>Attenuation</li>
+<li>Cross-talk</li>
+<li>Propagation</li>
+</ul>
+</li>
+<li>Transmission Media
+<ul>
+<li>Bound Transmission Media
+<ul>
+<li>Unshielded twisted-pair (UTP)</li>
+<li>Shielded twisted-pair (STP)</li>
+<li>Coaxial</li>
+<li>Fiber Optics</li>
+</ul>
+</li>
+<li>Unbound Transmission Media
+<ul>
+<li>Radio wave</li>
+<li>Microwave</li>
+<li>Infrared</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transmission Devices
+<ul>
+<li>Communications
+<ul>
+<li>Modems</li>
+<li>Multiplexers</li>
+<li>CSU/DSU</li>
+</ul>
+</li>
+<li>Network
+<ul>
+<li>Media Connectors</li>
+<li>Network Interface Boards</li>
+<li>Repeaters</li>
+<li>Hubs</li>
+</ul>
+</li>
+<li>Internetwork
+<ul>
+<li>Bridges</li>
+<li>Routers</li>
+<li>Gateways</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Physical Topology
+<ul>
+<li>Bus</li>
+<li>Ring</li>
+<li>Star</li>
+<li>Mesh</li>
+<li>Cellular</li>
+</ul>
+</li>
+<li>Digital Signalling
+<ul>
+<li>Current-state</li>
+<li>State transition</li>
+</ul>
+</li>
+<li><b>Analog Signalling</b>
+<p>As the wave moves from value A to value B, it passes through and includes an infinite number of values along its path. That means analog signals can have an infinite number of values in a range </p>
+<ul>
+<li>Amplitude</li>
+<li>Frequency</li>
+<li>Phase</li>
+</ul>
+</li>
+<li>Data Synchronization
+<ul>
+<li>Asynchronous</li>
+<li>Synchronous
+<ul>
+<li>Guaranteed State change</li>
+<li>Separate clock signals</li>
+<li>Oversampling</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data Bandwidth
+<ul>
+<li>Baseband</li>
+<li>Broadband</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="footer" style=
+"background-color:#FFA500;clear:both;text-align:center;">Copyright
+&copy; Laxmikant Khadke</div>
+<a href="http://users.skynet.be/mguery/mozilla/">
+<img src="http://users.skynet.be/mgueury/mozilla/tidy_32.gif" alt="Validated by HTML validator (based on tidy)" height="32" width="78" align="right"/>
+</a>
+
+<a href="http://:validator.w3.org/check?uri=referer">
+<img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML4.01 Transitional" height="31" width="88" align="right"></a>
+
+</body>
+</html>

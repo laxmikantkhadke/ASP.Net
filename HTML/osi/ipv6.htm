@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IPv6</title>
+<style>
+body
+{
+background-color:white;
+}
+<link rel="stylesheet" href="format1.css">
+
+</style>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<b>
+
+<center>
+<h1>
+Internet Protocol  </br> IPv6
+</h1>
+</center>
+
+</b>
+<hr color="black">
+
+<h4>IPv6</h4>
+Internet Protocol version 6 (IPv6 or IPng) was created to fix some of the problems that weren't foreseen when IPv4 was created. Most Internet Service Providers are capable of, and are using IPv6, but the vast majority of Internet users (as of 2010) are still using IPv4. Internet Protocol is what makes the Internet work! Internet Protocol version 6 was designed to make the Internet work better by providing more addresses, and to improve the functionality of multicast and special purpose uses of Internet Protocol.
+
+<h4>IPv6 Addresses</h4>
+
+An "IP" is an "Internet Protocol" address. IP addresses must be globally unique. All computers that use the Internet use only these unique IP addresses to talk to each other. Names such as http://www.google.com are just for human convenience and are never used for computer communication. Computers use Domain Name Service (DNS) to turn the names humans understand into IP addresses computers understand. There are two addressing schemes: IPv4 and IPv6.
+<br/>
+An IPv6 address is not part of the hardware of the computer, it is not a physical address, it is a logical address. An IPv6 address is something you can configure on the computer and is a unique, logical address that is stored in the computer's software. This property of being unique makes it easy to find a specific computer using the IP address. The fact that the IP address does not come from the computer's hardware means that a computer can be replaced and the IP address it was using goes to the new computer instead of being thrown away with the old computer. This also allows you to change the address of the computer when you move the computer to another network. IP addresses are often referred to as logical addresses whereas MAC addresses are referred to as physical addresses.
+
+<h4>IPv6 Address Notation</h4>
+
+IPv6 addresses in long form are represented as eight sets of four hexadecimal digits separated by colons, but that makes for long addresses (2001:0db8:0000:0000:0000:0000:0002). IPv6 addresses can be written in short hand using two conventions:
+<br/>
+<ul>
+	<li>Zero Suppression
+		<ul>
+		<li>all IPv6 address segments are 16 bits</li>
+		<li>The leading zeroes in each segment can be left out of the address segment.</li>
+		</ul>
+	</li>
+	<li>Zero Compression
+		<ul>
+		<li>Since all addresses contain 8 segments, following sections of zeroes can be collapsed to a double colon.</li>
+		</ul>	
+	</li>
+</ul>
+Using these two rules, our example IPv6 address 2001:0db8:0000:0000:0000:0000:0002 collapses to 2001:db8::2. <br/>
+<br/>
+	<table border="1" cellpadding="8" cellspacing="0" bgcolor="white">
+      <tr bgcolor="#CCCCCC">
+        <th scope="row">Address Type </th>
+        <th>  Prefix in Binary </th>
+        <th>Prefix in Hex </th>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Unspecified Address </td>
+        <td>All zeroes </td>
+        <td>::/128</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Loopback Address </td>
+        <td>000...01</td>
+        <td>::1/128</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 to IPv4 mapped Addresses </td>
+        <td>[80 zeroes]111111111111111[binary IPv4 address)]</td>
+        <td>::FFFF:0:0/96</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Multicast Addresses </td>
+        <td>11111111...</td>
+        <td>FF00::/8</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Link-Local Unicast Addresses </td>
+        <td>1111111010...</td>
+        <td>FE80::/10</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Unique Local Unicast (ULA) Addresses </td>
+        <td>1111110...</td>
+        <td>FC00::/7</td>
+      </tr>
+      <tr>
+        <td scope="row">IPv6 Global Unicast Addresses </td>
+        <td>[all other addresses] </td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td scope="row"><em>IPv6 Global Unicast Addresses in use on the Internet </em></td>
+        <td>&nbsp;</td>
+        <td><em>2000::/3</em></td>
+      </tr>
+    </table>
+
+<h4>Unspecified Address</h4>
+
+The IPv6 address 0000:0000:0000:0000:0000:0000:0000:0000 is the Unspecified Address (::/128). This address refers to the local host when the local host is obtaining an IPv6 address
+
+<h4>IPv6 Global Unicast Address Format (MEUI-64)</h4>
+
+Global Unicast addresses are structured as follows:
+<br/><br/>
+	<table border="1" cellpadding="4" cellspacing="0"bgcolor="white">
+      <tr bgcolor="#CCCCCC">
+        <th scope="row">&nbsp;</th>
+        <th>Global routing prefix </th>
+        <th>Subnet ID </th>
+        <th>Interface ID </th>
+      </tr>
+      <tr align="center">
+        <td scope="row"><em>001</em></td>
+        <td><p><strong>45 bits </strong><br />
+          [IANA | RIR | LIR or ISP] </p>
+          </td>
+        <td><strong>16 bits </strong></td>
+        <td><strong>64 bits </strong></td>
+      </tr>
+      <tr align="center">
+        <td colspan="4" scope="row"><strong>&lt;-- 128 bits --&gt; </strong></td>
+        </tr>
+    </table>
+<br/>
+All Global Unicast IPv6 addresses in MEUI-64 format have their first three bits set to 001.
+
+<h4>Global Routing Prefix</h4>
+
+The term prefix refers to all the bits to the left of the 'interesting part' of the IPv6 address. Starting from the left the bits identify where the IP addresses are assigned to and where the came from. An initial chunk of addresses and prefix are assigned starting with IANA, a smaller chunk of addresess and subsequent prefix is assigned to the Regional Internet Registries and then a still smaller piece of addresses assigned to the local Intnernet registry or Internet Service Provider, who then assign to the end user organization.
+
+<h4>Subnet ID</h4>
+
+The Subnet ID is used to identify individual IPv6 networks belonging to the end user organization. The Subnet ID has 16 bits which allows for 65,535 possible networks of 64-bit addresses.Current Internet Protocol addresses in their entirety are 32-bits, so IPv6 provides to each end user thousands of times more space than the entire IPv4 address space assigned to the entire Internet today. Theoretically, once an organization receives an assignment, they may never need any more space. Ever. Or so everyone hopes.
+
+<h4>Interface ID</h4>
+
+The last 64 bits in an IPv6 Global Unicast address are reserved for interfaces attached to a single network identified by the Subnet ID. This is represented in Modified Extended Unique Identifer-64 (MEUI-64) format as required by RFC 4291. Interface ID's must be unique within the Subnet ID prefix range (unique within the network range of addresses).
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

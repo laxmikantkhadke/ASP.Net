@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>802.11</title>
+<style>
+body  
+{
+background-color:gold;
+}
+<link rel="stylesheet" href="format1.css">
+</style>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<b>
+<center>
+<h1>
+802.11 
+</h1>
+</center>
+</b>
+<hr color="black">
+<h3> 802.11 WLAN Protocol overview</h3>
+
+In 1997, IEEE approved 802.11, the first internationally sanctioned wireless LAN standard. This first standard proposed any of three (mutually incompatible) implementations for the physical layer: infrared (IR) pulse position modulation, or radio frequency (RF) signalling in the 2.4 GHz band using either frequency hopping spread spectrum (FHSS) or direct sequence spread spectrum (DSSS). The IR method was never commercially implemented. The RF versions suffered from low transmission speeds (2 Mbps). In an effort to increase throughput, IEEE established two working groups (A and B) to explore alternate implementations of 802.11. A third group, Working Group G, was set up after these two.<br/>
+Working Group A explored the 5.0 GHz band, using orthogonal frequency division multiplexing (OFDM) to achieve throughputs in the range of 54 Mbps. The challenges, both to produce low cost equipment operating at such high frequencies and to reconcile competing international uses of this spectrum, kept their 802.11a WLAN standard from reaching the market before mid-2002.<br/>
+European regulators require 802.11a WLAN devices to support the added functions of dynamic frequency selection (DFS) and transmit power control (TPC). These help to avoid or mitigate interference between 802.11a WLANs and existing 5.0 GHz band uses.<br/>
+
+Working Group B explored more sophisticated DSSS techniques in the original 2.4 GHz band. Their 802.11b WLAN standard, published in September 1999, can deliver raw data rates of up to 11 Mbps. The majority of WLAN systems in the market today follow the 802.11b WLAN standard.<br/>
+
+The IEEE Working Group G began by exploring a variety of methods to further improve throughput in the 2.4 GHz spectrum used by the 802.11b standard. In May 2001, the FCC removed its ban on the use of OFDM technology in the 2.4GHz band. In November of 2001, Working Group G tabled a draft standard adopting OFDM, the same signalling method used in the 802.11a WLAN standard. The 802.11g WLAN standard is not absolutely finalized at this writing, but the main outlines are clear. One significant aspect of 802.11g is the degree to which it supports backward compatibility with the older 802.11b standard, which uses the same spectrum. When 802.11b nodes are present, 802.11g nodes use the RTS/CTS as a prelude to each packet transmission. Although the maximum raw data rates for 802.11g WLANs are as high as those of 802.11a WLANs, the actual data throughput for 802.11g drops significantly when 802.11b nodes are present. Mixed 802.11b/g networks are possible, but the maximum performance will be much higher in a pure 802.11g WLAN.<br/>
+
+The 802.11 WLAN protocols specify the lowest layer of the OSI network model (physical) and a part of the next higher layer (data link). A stated goal of the initial IEEE effort was to create a set of standards which could use different approaches to the physical layer (different frequencies, encoding methods, and so forth), and yet share the same higher layers. They have succeeded, and the Media Access Control (MAC) layers of the 802.11a, b, and g protocols are substantially identical. At the next higher layer still, all 802.11 WLAN protocols specify the use of the 802.2 protocol for the logical link control (LLC) portion of the data link layer. In the OSI model of network stack functionality, such protocols as TCP/IP, IPX, NetBEUI, and AppleTalk exist at still higher layers, and utilize the services of the layers underneath.<br/><br/>
+<img src="80211.jpg" height="325" width="90%">
+<br/>
+<h3>Radio frequencies and channels</h3>
+The most striking differences between WLANs and wired networks such as Ethernet are those imposed by the difference in the transmission medium. Where Ethernet sends electrical signals through wires, WLANs send radio frequency (RF) energy through the air. Wireless devices are equipped with a special network interface card (NIC) with one or more antennae, a radio transceiver set, and circuitry to convert between the analog radio signals and the digital pulses used by computers.
+<br/>
+Radio waves broadcast on a given frequency can be picked up by any receiver within range tuned to that same frequency. Effective or usable range depends on a number of factors. In general, higher power and lower frequency increase the range at which a signal can be detected. Distance from the signal source and interference from intervening objects or other signals all tend to degrade reception. Filtering, accurate synchronous timing, and a variety of error correcting approaches can help distinguish the true signal from reflections and interference.
+<br/>
+Information is carried by modulating the radio waves. In spread spectrum technologies, additional information is packed into a relatively small range of frequencies (a section of bandwidth called a channel) by having both sender and receiver use the same set of codes, such that each small modulation of the set of radio waves carries the greatest possible information. Direct sequence spread spectrum (DSSS) is one particular approach to packing more data into a given piece of RF spectrum. OFDM is another.
+<br/>
+The FCC in the United States and other bodies internationally control the use of RF spectrum and limit the output power of devices. The 802.11 WLAN standards attempt to deliver maximum performance within the limits set by these bodies, current radio technology and the laws of physics.
+<br/>
+Low output power, for example, limits 802.11 WLAN transmissions to fairly short effective ranges measured in hundreds of feet. Signal quality, and hence network throughput, diminishes with distance and interference. The higher data rates rely on more complex spectrum spreading techniques. These in turn require an ability to distinguish very subtle modulations in the RF signals.
+<br/>
+<h4>Signal and noise measurement</h4>
+The electrical energy in radio waves and other electrical signals is often measured in the unit of power Watts or, in the case of 802.11 WLANs, milliWatts (mW). For example, a typical 802.11b WLAN card might have a transmit power of 32 mW. The energy detected at the receiving antenna would be several orders of magnitude smaller than this. The wide range of values encountered in radio engineering could be expressed with exponential notation, but radio engineers came up with a simpler solution. They measure signal strength with a unit called the decibel-milliWatt, or dBm.
+<br/>
+A decibel is simply a unit of relationship between two power measurements. It is, in fact, one tenth of the exponent of ten. That is, 10 decibels denotes an increase by a factor of 10, 20 decibels an increase by a factor of 100, and 30 decibels an increase by a factor of 1,000. These correspond to 10 raised to the power of (10/10), 10 raised to the power of (20/10), and 10 raised to the power of (30/10), respectively.
+<br/>
+Decibels are dimensionless. By associating decibels with a particular unit, it is possible to write and compare a wide range of power values easily. By the definition of the decibel milliwatt, 0 dBm = 1 mW. Power values larger than 1 mW are positive numbers. Power values smaller than 1 mW are expressed as negative numbers. Remember, this is an exponent. For example, the power output of 32mW mentioned above could be written as 15 dBm. A typical lower limit of antenna sensitivity for an 802.11b WLAN card might be expressed as -83 dBm. A more practical lower limit might be -50 dBm, or 0.00001 mW.
+<br/>
+Not all 802.11 WLAN cards report signal strength in dBm. The 802.11 WLAN standard itself calls for makers to implement their own scale of received signal strength, and report that within the protocol as a value called Received Signal Strength Indicator (RSSI). While one manufacturer might use a scale of 0-31, another might use 0-63. OmniPeek regularizes these values to a percentage and reports them as signal strength.
+<br/>
+Noise is also a form of electrical energy, and is reported in the same way, either as a percentage or in dBm. The signal to noise ratio is simply the difference between signal and noise.
+<br/>
+<h4>Transmission rates and channels</h4>
+To overcome signal degradation problems, 802.11 WLANs can gracefully step down to a slower but more robust transmission method when conditions are poor, then step back up again when conditions improve.
+<br/>
+The full set of data rates for all three standards is shown in Table. For 802.11a WLANs, the 6, 12, and 24 Mbps data rates are mandatory, all others are optional. The 802.11g WLANs will support all the same data rates as 802.11a WLANs when communicating with other 802.11g WLAN nodes, but can also use the same rates as the 802.11b WLAN when communicating with nodes using that older standard. In addition, 802.11g WLANs may support rates in the range of 22 Mbps using optional encoding methods such as PBCC.
+<br/><br/>
+<table width="500" border="1" bgcolor="white">
+<tr>
+	<th>802.11a</th>
+	<th>802.11b</th>
+	<th>802.11g</th>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>1 Mbps</td>
+	<td>1 Mbps</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>2 Mbps</td>
+	<td>2 Mbps</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>5.5 Mbps</td>
+	<td>5.5 Mbps</td>
+</tr>
+<tr>
+	<td>6 Mbps</td>
+	<td>&nbsp;</td>
+	<td>6 Mbps</td>
+</tr>
+<tr>
+	<td>9 Mbps</td>
+	<td>&nbsp;</td>
+	<td>9 Mbps</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>11 Mbps</td>
+	<td>11 Mbps</td>
+</tr>
+<tr>
+	<td>12 Mbps</td>
+	<td>&nbsp;</td>
+	<td>12 Mbps</td>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td>22 Mbps</td>
+</tr>
+<tr>
+	<td>24 Mbps</td>
+	<td>&nbsp;</td>
+	<td>24 Mbps</td>
+</tr>
+<tr>
+	<td>36 Mbps</td>
+	<td>&nbsp;</td>
+	<td>36 Mbps</td>
+</tr>
+<tr>
+	<td>48 Mbps</td>
+	<td>&nbsp;</td>
+	<td>48 Mbps</td>
+</tr>
+</table> 
+<br/><br/>
+The 802.11b WLAN standard uses DSSS in the 2.4 GHz band. Taking 2412 MHz as the center frequency of the first channel, the standard described 14 channels, 5 MHz apart, numbered 1 to 14. In the United States, the FCC allocated bandwidth to support the first 11 channels. Regulatory bodies in other jurisdictions made different allocations from within this same band.
+<br/>
+The 802.11g WLAN standard uses the same spectrum and channels as 802.11b WLANs, but uses the OFDM encoding and transmission methods of the 802.11a WLAN standard when communicating with other 802.11g WLAN nodes.
+<br/>
+The 802.11a WLAN standard uses OFDM in the 5.0 GHz band. The standard defines channels 1-199, starting at 5.005 GHz, with their center frequencies spaced 5 MHz apart. The FCC in the United States has allocated bandwidth in three parts of the spectrum. The ETSI and ERM in Europe, MKK in Japan, and other regulatory agencies in other jurisdictions have made their own allocations within this band.
+<br/>
+<h3>Collision avoidance and media access</h3>
+One of the most significant differences between Ethernet and 802.11 WLANs is the way in which they control access to the medium, determining who may talk and when. Ethernet uses CSMA/CD (carrier sense multiple access with collision detection). This is possible because an Ethernet device can send and listen to the wire at the same time, detecting the pattern that shows a collision is taking place. When a radio attempts to transmit and listen on the same channel at the same time, its own transmission drowns out all other signals. Collision detection is impossible.
+<br/>
+The carrier sense capability of Ethernet and WLANs is also different. On an Ethernet segment, all stations are within range of one another at all times, by definition. When the medium seems clear, it is clear. Only a simultaneous start of transmissions results in a collision. Nodes on a WLAN cannot always tell by listening alone whether or not the medium is in fact clear.
+<br/>
+In a wireless network, a device can be in range of two others, neither of which can hear the other, but both of which can hear the first device. The access point can hear both node A and node B, but neither A nor B can hear each other. This creates a situation in which the access point could be receiving a transmission from node B without node A sensing that node B is transmitting. Node A, sensing no activity on the channel, might then begin transmitting, jamming the access point's reception of node B's transmission already under way. This is known as the "hidden node" problem.
+<br/>
+To solve the hidden node problem and overcome the impossibility of collision detection, 802.11 WLANs use CSMA/CA (carrier sense multiple access with collision avoidance). Under CSMA/CA, devices use a four-way handshake to gain access to the airwaves to ensure collision avoidance. To send a direct transmission to another node, the source node puts a short Request To Send (RTS) packet on the air, addressed to the intended destination. If that destination hears the transmission and is able to receive, it replies with a short Clear to Send (CTS) packet. The initiating node then sends the data, and the recipient acknowledges all transmitted packets by returning a short ACK (Acknowledgement) packet for every transmitted packet received.
+<br/>
+The 802.11g WLAN standard uses this RTS/CTS method only when it detects nodes using 802.11b transmissions. Because the RTS/CTS in these mixed b/g networks must be sent in a form compatible with the older and slower 802.11b WLAN standards, this reduces the overall throughput of 802.11g WLANs, particularly near the top end of their performance, by something on the order or 20-50%.
+<br/>
+Timing is critical to mediating access to the airwaves in WLANs. To ensure synchronization, access points or their functional equivalents periodically send beacons and timing information.
+<br/>
+<h3>Packet structure and packet types</h3>
+Like the rest of the 802 family of LAN protocols, 802.11 WLAN sends all network traffic in packets. There are three basic types: data packets, network management packets and control packets. The first section describes the basic structure of 802.11 WLAN data packets and the information they provide for network analysis. The second section describes the management and control packets, their functions and the role they play in network analysis.
+<br/>
+<h4>Packet structure</h4>
+All the functionality of the protocol is reflected in the packet headers. RF technology and station mobility impose some complex requirements on 802.11 WLAN networks. This added complexity is reflected in the long physical layer convergence protocol (PLCP) headers as well as the   data-rich MAC header.
+<br/>
+Because 802.11 WLANs must be able to form and re-form their membership constantly, and because radio transmission conditions themselves can change, coordination becomes a large issue in WLANs. Management and control packets are dedicated to these coordination functions. In addition, the headers of ordinary data packets contain a great deal more information about network conditions and topology than, for example, the headers of Ethernet data packets would contain.<br/>
+<br/><img src="80211frame.gif">
+<br/>
+<br/>
+
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

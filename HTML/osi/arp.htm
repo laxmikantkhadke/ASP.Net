@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="format1.css">
+<title>ARP</title>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<body bgcolor= "white"/>
+
+<b>
+<center>
+<h1>
+Address Resolution Protocol</br>ARP
+</h1>
+</center>
+</b>
+<hr>
+<h3>Address Resolution Protocol (ARP)</h3> ARP is a telecommunications protocol used for resolution of network layer addresses into link layer addresses, a critical function in multiple-access networks. ARP was defined by RFC 826 in 1982. It is Internet Standard STD 37. It is also the name of the program for manipulating these addresses in most operating systems.<br/>
+ARP has been implemented in many combinations of network and overlaying internetwork technologies, such as IPv4, Chaosnet, DECnet and Xerox PARC Universal Packet (PUP) using IEEE 802 standards, FDDI, X.25, Frame Relay and Asynchronous Transfer Mode (ATM), IPv4 over IEEE 802.3 and IEEE 802.11 being the most common cases.
+
+<h3>Operating scope</h3>
+
+The Address Resolution Protocol is a request and reply protocol that runs encapsulated by the line protocol. It is communicated within the boundaries of a single network, never routed across internetwork nodes. This property places ARP into the Link Layer of the Internet Protocol Suite, while in the Open Systems Interconnection (OSI) model, it is often described as residing between Layers 2 and 3, being encapsulated by Layer 2 protocols. However, ARP was not developed in the OSI framework.
+
+<h3>Packet structure</h3>
+
+The Address Resolution Protocol uses a simple message format that contains one address resolution request or response. The size of the ARP message depends on the upper layer and lower layer address sizes, which are given by the type of networking protocol (usually IPv4) in use and the type of hardware or virtual link layer that the upper layer protocol is running on. The message header specifies these types, as well as the size of addresses of each. The message header is completed with the operation code for request (1) and reply (2). The payload of the packet consists of four addresses, the hardware and protocol address of the sender and receiver hosts.
+The principal packet structure of ARP packets is shown in the following table which illustrates the case of IPv4 networks running on Ethernet. In this scenario, the packet has 48-bit fields for the sender hardware address (SHA) and target hardware address (THA), and 32-bit fields for the corresponding sender and target protocol addresses (SPA and TPA). Thus, the ARP packet size in this case is 28 bytes. The EtherType for ARP is 0x0806.<br/><br/>
+
+<img src="packet.gif" height="405" width="625">
+<h3>Hardware type (HTYPE)</h3>
+This field specifies the network protocol type. Example: Ethernet is 1.
+<h3>Protocol type (PTYPE)</h3>
+This field specifies the internetwork protocol for which the ARP request is intended. For IPv4, this has the value 0x0800. The permitted PTYPE values share a numbering space with those for EtherType.
+<h3>Hardware length (HLEN)</h3>
+Length (in octets) of a hardware address. Ethernet addresses size is 6.
+<h3>Protocol length (PLEN)</h3>
+Length (in octets) of addresses used in the upper layer protocol. (The upper layer protocol specified in PTYPE.) IPv4 address size is 4.
+<h3>Operation </h3>
+Specifies the operation that the sender is performing: 1 for request, 2 for reply.
+<h3>Sender hardware address (SHA)</h3>
+media address of the sender.
+<h3>Sender protocol address (SPA)</h3>
+internetwork address of the sender.
+<h3>Target hardware address (THA)</h3>
+media address of the intended receiver. This field is ignored in requests.
+<h3>Target protocol address (TPA)</h3>
+internetwork address of the intended receiver.
+
+<hr>
+
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

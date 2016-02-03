@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ICMPv6 </title>
+<style>
+body
+{
+background-color:white;
+}
+<link rel="stylesheet" href="format1.css">
+</style>
+</head>
+<body>
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<b>
+
+<center>
+<h1>
+Internet Control Message Protocol (ICMP) version 6</br> ICMPv6 
+</h1>
+</center>
+
+</b>
+<hr color="black">
+
+<h3>ICMPv6 Overview</h3>
+Like IPv4, the specification for the Internet Protocol version 6 (IPv6) header and extension
+headers does not provide facilities for reporting errors. Instead, IPv6 uses an updated version
+of the Internet Control Message Protocol (ICMP) named ICMP version 6 (ICMPv6). ICMPv6
+has the common IPv4 ICMP functions of reporting delivery and forwarding errors and providing
+a simple echo service for troubleshooting. ICMPv6 is defined in RFC 4443 and is required
+for an IPv6 implementation.<br/>
+The ICMPv6 protocol also provides a packet structure framework for the following:<br/>
+<ul>
+<li style="font-weight:bold;">Neighbor Discovery
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+ Neighbor Discovery (ND) is a series of five ICMPv6 messages that
+manage node-to-node communication on a link. ND replaces Address Resolution Protocol
+(ARP), ICMPv4 Router Discovery, and the ICMPv4 Redirect message.</p>
+</li> 
+<li style="font-weight:bold;">Multicast Listener Discovery
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+ Multicast Listener Discovery (MLD) is a series of three
+ICMPv6 messages that are equivalent to the Internet Group Management Protocol
+(IGMP) for IPv4 for managing subnet multicast membership. </p>
+</li>
+</ul>
+ICMPv6 is also used by other protocols, such as Secure Neighbor Discovery (SEND). SEND is
+not supported by IPv6 for Windows Vista and Windows Server 2008.<br/>
+<br/>
+<b>Note:</b>&nbsp;&nbsp;  RFC 4884 describes changes to ICMPv6 to support multipart messages. These
+changes are not supported by IPv6 for Windows Vista and Windows Server 2008 and are not
+described in this chapter.<br/>
+
+<h3>Types of ICMPv6 Messages</h3>
+There are two types of ICMPv6 messages:<br/>
+<ul>
+<li style="font-weight:bold;">Error messages
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+ Error messages report errors in the forwarding or delivery of IPv6
+packets by either the destination node or an intermediate router. The high-order bit of
+the 8-bit Type field for all ICMPv6 error messages is set to 0. Therefore, valid values for
+the Type field for ICMPv6 error messages are in the range of 0 through 127. ICMPv6
+error messages include Destination Unreachable, Packet Too Big, Time Exceeded, and
+Parameter Problem.</p></li>
+<li style="font-weight:bold;">Informational messages
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+ Informational messages provide diagnostic functions and
+additional host functionality, such as MLD and ND. The high-order bit of the 8-bit Type
+field for all ICMPv6 informational messages is set to 1. Therefore, valid values for the
+Type field for ICMPv6 information messages are in the range of 128 through 255.
+ICMPv6 informational messages described in RFC 4443 include Echo Request and Echo
+Reply. There are additional ICMPv6 informational messages defined for Mobile IPv6.</p></li>
+</ul>
+<h4>ICMPv6 Error Messages</h4>
+ICMPv6 error messages report forwarding or delivery errors by either a router or the destination
+host, and they consist of the following messages:<br/>
+<ul>
+<li>Destination Unreachable (ICMPv6 Type 1)<br/>
+A router or a destination host sends an ICMPv6 Destination Unreachable message when the
+packet cannot be forwarded to the destination node or upper-layer protocol.
+</li>
+<li>Packet Too Big (ICMPv6 Type 2)<br/>
+A router sends an ICMPv6 Packet Too Big message when the packet cannot be forwarded
+because the link MTU on the forwarding interface of the router is smaller than the size of the
+IPv6 packet.
+</li>
+<li>Time Exceeded (ICMPv6 Type 3)<br/>
+A router typically sends an ICMPv6 Time Exceeded message when the Hop Limit field in the
+IPv6 header becomes zero after decrementing its value during the forwarding process.
+</li>
+<li>Parameter Problem (ICMPv6 Type 4)<br/>
+A router or the destination sends an ICMPv6 Parameter Problem message when there is an
+error in the IPv6 header or an extension header that prevents IPv6 from performing additional
+processing.
+</li>
+</ul>
+
+<h3>ICMPv6 Informational Messages</h3>
+The ICMPv6 informational messages defined in RFC 4443 provide a simple diagnostic
+capability to aid in troubleshooting and consist of the following messages:<br/>
+<ul>
+<li>Echo Request (ICMPv6 Type 128)<br/>
+An IPv6 node sends an ICMPv6 Echo Request message to a destination to solicit an immediate
+Echo Reply message. The Echo Request/Echo Reply message facility provides a simple
+diagnostic function to aid in the troubleshooting of a variety of reachability and routing
+problems.
+</li>
+<li>Echo Reply (ICMPv6 Type 129)<br/>
+An IPv6 node sends an ICMPv6 Echo Reply message in response to the receipt of an ICMPv6
+Echo Request message.
+</li>
+</ul>
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

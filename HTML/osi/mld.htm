@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MLD</title>
+<style>
+body
+{
+background-color:white;
+}
+<link rel="stylesheet" href="format1.css">
+
+</style>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<b>
+
+<center>
+<h1>
+Multicast Listener Discovery  </br> (MLD)
+</h1>
+</center>
+
+</b>
+<hr color="black">
+
+Multicast Listener Discovery (MLD) is the IPv6 equivalent of Internet Group Management
+Protocol version 2 (IGMPv2) defined in RFC 2236 for Internet Protocol version 4 (IPv4).
+MLD is a set of messages exchanged by routers and hosts, allowing routers to discover the set
+of multicast addresses for which there is at least one listening host for each attached subnet.
+Like IGMPv2, MLD does not allow routers to discover the list of individual multicast listeners
+for each multicast address. MLD is described in RFC 2710.<br/>
+MLD version 2 (MLDv2) is the IPv6 equivalent of IGMP version 3 (IGMPv3) defined in RFC
+3376 for IPv4. MLDv2 performs the same functions as MLD, but it allows IPv6 hosts to
+register interest in source-specific multicast traffic with their local multicast routers. An
+MLDv2-capable host can register interest in receiving IPv6 multicast traffic from only specific
+source addresses (an include list) or from any source except specific source addresses (an
+exclude list). MLDv2 is described in RFC 3810.<br/>
+
+<h4>IPv6 Multicast Overview</h4>
+In addition to unicast and anycast support, IPv6 also provides a mechanism to send and
+receive IPv6 multicast traffic. IPv6 multicast traffic is sent to a single destination address but is
+received and processed by multiple IPv6 hosts, regardless of their location on the network.
+Hosts listen to a specific IPv6 multicast address and receive all packets to that address.
+Multicast is more efficient than IPv6 unicast for one-to-many delivery of data. Instead of
+having multiple unicast packets sent, only one packet is sent.<br/>
+
+The additional elements of IPv6 multicast include the following:
+<ul>
+	<li>The set of hosts listening on a specific IPv6 multicast address is called a multicast group.</li>
+	<li>Multicast group membership is dynamic, and hosts can join and leave the group at
+any time.</li>
+	<li>There are no limitations to the size of a multicast group.</li>
+	<li>A multicast group can span IPv6 routers across multiple subnets. This configuration
+requires IPv6 multicast support on IPv6 routers and the ability for hosts to register
+themselves with the router. Host registration is accomplished by using MLD or MLDv2.</li>
+	<li>A host can send traffic to a multicast address without being a member of the group.</li>
+</ul>
+
+These are the same elements that are used for IPv4 multicast.<br/>
+IPv6 multicast addresses are defined by the address prefix FF00::/8 and can have different
+scopes. For more information about IPv6 multicast addresses, see Chapter 3, “IPv6
+Addressing.” In contrast, IPv4 multicast addresses use the address prefix 224.0.0.0/4.
+In an IPv6 multicast-enabled network, any host can send multicast traffic to any multicast
+address, and any host can receive multicast traffic from any multicast address regardless of its
+location. To facilitate this capability, the hosts and routers of the network must support
+multicast traffic.<br/>
+
+<h3>MLD Packet Structure</h3>
+Unlike IGMPv2, MLD uses ICMPv6 messages instead of defining a separate message
+structure.<br/><br/>
+
+	<table border="1" bgcolor="white">
+	<tr>
+	<td>IPv6 Header<br/>Next Header = 0<br/>(Hop-by-Hop Options)</td>
+	<td>Hop-by-Hop Options Header<br/>IPv6 Router Alert Option<br/>Next Header = 58 (ICMPv6)</td>
+	<td>MLD Message</td>
+	</tr>
+	</table>
+<br/>
+An MLD message packet consists of an IPv6 header, a Hop-by-Hop Options extension header,
+and the MLD message. The Hop-by-Hop Options extension header contains the IPv6 Router
+Alert Option described in RFC 2711. It is used to ensure that routers process MLD messages
+that are sent to multicast addresses for which the router is not a group member.
+<h3>MLD Messages</h3>
+There are three types of MLD messages:
+<ol>
+<li>Multicast Listener Query (ICMPv6 Type 130)</li>
+<li>Multicast Listener Report (ICMPv6 Type 131)</li>
+<li>Multicast Listener Done (ICMPv6 Type 132)</li>
+</ol>
+All three MLD messages share the same message structure.
+<br/>
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="format1.css">
+<title>SNMP</title>
+</head>
+<body>
+<div id="container" style="width:80%;margin-left:auto;margin-right:auto;">
+<body bgcolor= "white"/>
+
+<b>
+
+<center>
+<h1>
+ Simple Network Management Protocol  </br>SNMP
+</h1>
+</center>
+
+</b>
+<hr>
+
+<h3>Overview</h3>
+ 
+The Simple Network Management Protocol (SNMP) is by far, the dominant protocol in network management. A key reason for its widespread acceptance, besides being the chief Internet standard for network management is its relative simplicity. Implementing SNMP management in a networked device is far more straightforward than most other standard or non-standard approaches to network management. Despite that, SNMP application development has not been as simple as one would like. It has required significant effort to develop management applications to manage the variety of networked devices to be managed. This situation is now changing for the better, as more SNMP tools are available. There are also different versions of SNMP available, such as SNMP V1, SNMP V2c, and SNMP V3.  With improved tools, SNMP is poised to deliver end-to-end management for all areas of the growing internet industry.
+ 
+ 
+<h3>SNMP Management</h3>
+ 
+SNMP management has become the dominant standardized network management scheme in use today. The SNMP set of standards provide a framework for the definition of management information along with a protocol for the exchange of that information. The SNMP model assumes the existence of managers and agents. A manager is a software module responsible for managing a part or all the configuration on behalf of the network management applications and users. An agent is a software module in a managed device responsible for maintaining local management information and delivering that information to a manager via SNMP. A management information exchange can be initiated by the manager (via polling) or by the agent (via a trap). Agents function as collection devices that gather and send data about the managed resource in response to a request from the manager. UDP ports 161 and 162 are the default ports reserved for SNMP. The agent listens for requests and replies to them over port 161 and reports asynchronous traps on port 162, unless it is instructed to use different ports. SNMP accommodates resources that do not implement the SNMP software by means of proxies. A proxy is an SNMP agent that maintains information on behalf of one or more non-SNMP devices.
+ 
+<h3>Management Information Base (MIB)</h3>
+ 
+SNMP defines a client/server relationship. The network manager makes virtual connections to the SNMP agent which executes on a remote network device and sends information to the manager regarding the device's status. A database describing the application parameters is created in the agent. The manager uses this database to request the agent and interpret the signals received. This database is referred to as the SNMP Management Information Base (MIB). There is a standard set of statistical and control values defined for hardware nodes on a network. These are described in a MIB which is a part of the SNMP. SNMP also allows the extension of these standard values with values specific to a particular agent through the use of private MIBs.
+ 
+<h3>Object Identifiers (OID)</h3>
+ 
+The SNMP manager or the management application uses a well-defined naming syntax to specify the variables to the SNMP agent. Object names in this syntax are called Object Identifiers (Object IDs or OIDs). OIDs are series of numbers that uniquely identify an object to an SNMP agent. OIDs are arranged in a hierarchical, inverted tree structure. The OID tree begins with the root and expands into branches. Each point in the OID tree is called a node and each node will have one or more branches, or will terminate with a leaf node. The format of OID is a sequence of numbers with dots in between. There are two roots for Object Identifiers, namely iso and ccit. iso starts with .1 and ccit starts with .0. Most Object Identifiers start with .1.3.6.1, where 1=iso, 3=org, 6= dod, 1 = internet. The Internet sub-tree branches into mgmt and private. To understand the concept of relative and absolute Object Identifiers, let us consider the zoho Object Identifier .1.3.6.1.4.1.2162. It specifies the path from the root of the tree. The root does not have a name or a number but the initial 1 in this OID is directly below root. This is called an absolute OID. However, a path to the variable may be specified relative to some node in the OID tree. For example, 2.1.1.7 specifies the sysContact object in the system group, relative to the Internet (.1.3.6.1) node in the OID tree. This is called a relative OID.
+ 
+<h3>SNMP Traps</h3>
+ 
+In addition to exposing the manageable parameters in response to the requests from a management station, agents  also have the ability to send unsolicited messages to managers when they detect some significant event. An unsolicited message of this sort is called a trap notification. The fields that comprise the SNMP trap PDU occur in an order as shown below.
+
+<table border=1 bordercolor=#000000 x-use-null-cells cellspacing="0" class="whs2">
+<col class="whs3">
+<col class="whs4">
+<col class="whs5">
+<col class="whs6">
+<col class="whs7">
+<col class="whs5">
+<col class="whs6">
+
+<tr class="whs8">
+<td colspan="1" rowspan="1" width="85px" class="whs9">
+<p>PDU type</td>
+<td colspan="1" rowspan="1" width="114px" class="whs10">
+<p>Enterprise</td>
+<td colspan="1" rowspan="1" width="81px" class="whs11">
+<p>&nbsp;Agent 
+ address</td>
+<td colspan="1" rowspan="1" width="82px" class="whs12">
+<p>Generic trap type</td>
+<td colspan="1" rowspan="1" width="71px" class="whs13">
+<p>&nbsp;Specific 
+ trap type</td>
+<td colspan="1" rowspan="1" width="81px" class="whs11">
+<p>Time stamp</td>
+<td colspan="1" rowspan="1" width="82px" class="whs12">
+<p>&nbsp;Variable 
+ bindings</td></tr>
+</table>
+
+The fields have the following meaning:
+<ul>
+<li>PDU type identifies the packet as a trap notification.
+
+</li><li>Enterprise is the vendor identification (OID) for the network management sub-system that generated the trap ( .1.3.6.1.4.1.2162 )
+</li><li>Agent address is the IP address of the node where the trap is generated.
+</li><li>Generic trap type is an integer in the range of 0 to 6. These values have the meanings indicated in the table below.
+</li><li>Specific trap type is a number that further specifies the nature of the event that generated the trap in the case of traps of generic type 6 (enterprise Specific). The interpretation of this code is vendor-specific.</li>
+<li>Time stamp is the length of time between the last reinitialization of the agent that issued the trap and the time at which the trap was issued.</li>
+<li>Variable bindings provide additional information pertaining to the trap. This field consists of name/value pairs. The significance of this field is vendor-specific.</li>
+</ul>
+<hr>
+
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

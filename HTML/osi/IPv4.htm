@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="format1.css">
+<title>IPv4</title>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<body bgcolor= "white"/>
+
+<b>
+
+<center>
+<h1>
+Internet Protocol  </br> IPv4
+</h1>
+</center>
+
+</b>
+<hr color="black">
+
+Internet Protocol is part of the Internet suite of communications protocols that provides globally unique addresses in dotted quad notation, transmits data in packets and performs routing between IP based networks.
+
+This entire tutorial pertains to what is referred to as Internet Protocol version 4 (IPv4). There is also exists the next generation of Internet Protocol version 6 (IPv6 or IPng) that was created to fix some of the problems that weren't foreseen when IPv4 was created. Most Internet Service Providers are capable of handling IPv6, but the vast majority of Internet users are still using IPv4.
+<h3>INTRODUCTION</h3>
+<ul style="font-weight:bold;">
+
+<li>Introduction to Internet Protocol
+
+	<ul>
+
+	<li>What is 'Internet Protocol' ?
+<p style="font-family:times new roman, times,serif;font-weight:normal;">	
+Internet Protocol is what makes the Internet work.<br/>
+Internet Protocol (IP) is a piece of software that operates at the Network Layer of the OSI Model. IP provides the following:</p>
+<ul>
+<li>Unique Addresses</li>
+<li>Connectionless Communication</li>
+<li>Routing</li>
+<li>Unicast, Broadcast and Multicast</li></ul>
+<h4>UNIQUE ADDRESSES</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+Everything connected to the Internet must have a unique numerical address. Just like your house has a unique address, so does each computer attached to the Internet. These addresses are not fixed, and can be changed when necessary. These addresses are represented in what is called 'dotted-decimal notation' which means is that there are numbers with dots in between them that look like this: 204.25.183.4.
+<br/>
+Always remember that computers use these dotted-decimal 'IP Addresses' to communicate and never use letters or names.</p>
+
+<h4>CONNECTIONLESS COMMUNICATION</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+IP communication is connectionless, and does not bother to set up dedicated end-to-end connections for communication. Upper layer protocols such as TCP are used for setting up connections and tearing them down, managing the recovery of lost data and other errors. These protocols function at the Transport layer of the OSI model or higher.</p>
+
+<h4>ROUTING</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+IP is aware when a computer's address is part of the local group of computers, or somewhere else. Routing is the part of IP that allows very intelligent and specialized routing devices (routers) to recognize that information is not part of the local group of machines, and needs to be forwarded to the destination. These devices are smart enough to 'figure out' how to get to destinations they aren't directly connected to. The process of forwarding the information is called routing.</p>
+
+	</li>
+	<li>What is an 'IP Network'?
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+Networks provide communication between computing devices. To communicate properly, all computer (hosts) on a network need to use the same communication protocols. An Internet Protocol network is a network of computer using Internet Protocol for their communication protocol.
+
+All computer within an IP network must have an IP address that uniquely identifies that individual host. An Internet Protocol-based network (an IP Network) is a group of hosts that share a common physical connection and that use Internet Protocol for network layer communication. The IP addresses in an IP network are contiguous, that is, one address follows right after the other with no gaps.</p>
+
+<h4>Address Types in an IP Network<h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+Within a given range of IP addresses used in every IP network are special addresses reserved for</p>
+		<ul>
+		<li>Host Addresses</li>
+		<li>Network Addresses</li>
+		<li>Broadcast Addresses</li>
+		</ul>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+In addition, a IP network has a subnet mask. The subnet mask is a value stored one each computer that allows that computer to identify which IP addresses are within the network to which they are attached, and which IP addresses are on an outside network.</p>
+
+<h4>Host address</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+A host's IP address is the address of a specific host on an IP network. All hosts on a network must have a unique IP address. This IP address is usually not the first or the last IP address in the range of network IP addresses as the first IP address and last IP address in the range of IP addresses are reserved for special functions. The host addresses are all the addresses in the IP network range of IP addresses except the first and last IP addresses. Host IP addresses allow network hostst to establish one-to-one direct communication. This one-to-one communication is referred to as unicast communication.<br/>
+
+All host IP addresses can be split into two parts: a network part and a host part. The network part of the IP addresses identifies the IP Network the host is a member of. The host part uniquely identifies an individual host.</p>
+
+<h4>Network Address</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+The network address is the first IP address in the range of IP addresses. To be more precise, the network address is the address in which all binary bits in the host portion of the IP address are set to zero. The purpose of the Network Address is to allow hosts that provide special network services to communicate. In practice, the network address is rarely used for communication.</p>
+
+<h4>Broadcast Address</h4>
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+The broadcast IP address is the last IP address in the range of IP addresses. To be more precise, the broadcast address is the IP address in which all binary bits in the host portion of the IP address are set to one. The broadcast address is reserved and allows a single host to make an announcement to all hosts on the network. This is called broadcast communication and the last address in a network is used for broadcasting to all hosts because it is the address where the host portion is all ones. This special address also sometimes called the all hosts address. Some vendors allow you to set an address other than the last address as the broadcast address.	</p>
+
+	</li>
+	<li>What is an 'IP Host'?
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+An Internet host can be a machine or an application connected to the Internet that has an Internet Protocol address (IP address). An IP address is used to uniquely identify every host on the Internet. Because these IP address are unique, they can be used as the source and destination IP addresses in any IP-based communication. At the most basic level, Internet hosts fall into two categories, Servers and Clients. See InetDaemon's tutorial on Client-Server relationships for more information.
+<br/>
+Some say that a computer 'hosts' or 'serves' the clients that use an application. This is the orgin of the terms host and server. A host is not neccessarilly a single computer. It is possible for a single computer to use multiple IP addresses, especially when it is providing multiple services such as an e-mail server and a web server at the same time. One IP address will be used to identify the e-mail server software, the other IP address will identify the web server software but both server applications are running at the same time on the same computer. The IP addresses allow each to be accessed individually.
+<br/>
+Hosts are organized into groups called Networks.</p>
+
+	</li>
+	<li>What is an IP address?
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+Internet Protocol Addresses (IP Address)
+An IP address is a logical address of 32-bits (IPv4) that uniquely identifies a device on a network. IPv4 addresses are represented in decimal by four numbers from 0-255 separated by dots in what is called "dotted quad notation".</p>
+
+	</li>
+	<li>Where do IP Addresses come from?</li>
+	<li>How do I get an IP address for my home computer?</li>
+	<li>How do I get IP addresses for my company?</li>
+	</ul>
+</li>
+<li>IP Addresses
+	<ul>
+	<li>Internet Protocol Addresses (IP Addresses)
+		<ul>
+		<li>Public IP Addresses</li>
+		<li>Network Address</li>
+		<li>Host Addresses</li>
+		<li>Broadcast Addresses</li>
+		</ul>
+	</li>
+	<li>Classful Addressing</li>
+	<li>Classless Addressing</li>
+	<li>Variable Length Subnet Masking (VLSM)
+		<ul>
+		<li>Supernetting</li>
+		<li>Subnetting</li>
+		</ul>
+	</li>
+	<li>Special Addresses
+
+		<ul>
+		<li>Private IP Addresses</li>
+		<li>Multicast Addresses</li>
+		</ul>
+	</li>
+</li>
+<li>IP Address Exhaustion
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+IP Address Exhaustion is a phrase used to describe the problem of the ever dwindling supply of IPv4 addresses. The Internet Assigned Numbers Authority (IANA),  the folks that manage all IP addresses on the planet, has been telling us for quite some time that we are running out of addresses.  We've known that the IP Addressspace is limited and small, relative to the number of computers and Internet-capable devices out there, but so far, there have been workarounds to keep things running.</p>
+
+<h4>Usage as of 2009</h4>
+
+<p style="font-family:times new roman, times,serif;font-weight:normal;">
+If you take a look at the Internet World Stats page you will see that as of 2009, there were an estimated 6.7 billion people on the planet. Of those, there are an estimated 361 million people with Internet access--that's about 5.3% of the world's population. That means that as more people "get online", we're going to need more addresses. We need a lot of equipment to build the Internet:</p>
+	<ul style="font-weight:normal;">
+
+	<li>Wireless Access Points to let you access the local network</li>
+	<li>Switches to move your traffic to routers</li>
+	<li>Routers to move your traffic on and off your network and out to the Internet</li>
+	<li>Firewalls to let you safely into and out of the Internet</li>
+	<li>Servers to house and deliver websites, video, music and let you poke, friend and tweet</li>
+	<li>Load Balancers to make large sites like Google possible</li>
+	<li>Caching servers, to speed up your Google, Facebook, YouTube and Hulu experience</li>
+	<li>Satellite Gear
+		<ul>
+		<li>Ground station receiveers and transmitters</li>
+		<li>Satellites</li>
+		</ul>
+	</li>
+	<li>Microwave Towers</li>
+	<li>Cellular towers and associated gear (gotta like and tweet from your phone, right?)</li>
+	<li>Home computers</li>
+	<li>Cell phones, tablets</li>
+	<li>And lots of other equipment...</li>
+IPv4 only allows for 4.29 billion total addresses and between the people that need them, and the equipment that provides the service, we've just about used them up.
+
+Complicating things is the fact that at the time IPv4 was conceived of, they never thought there would be this many computers on the Internet, so they just set aside whole blocks and marked them off as unusable on the Internet.
+
+<h4>Unusable IP Address Space</h4>
+<ul>
+<li>10.0.0.0 – 10.255.255.255 (Private IP addresses, ~16.7 million IP addresses unusable)</li>
+<li>127.0.0.0 – 127.255.255.255 (Loopback IP addresses, ~16.7 million IP addresses unusable)</li>
+<li>172.16.0.0 – 172.31.255.255 (Private IP addresses, ~1.04 million IP addresses unusable)</li>
+<li>192.168.0.0 – 192.168.255.255 (Private IP addresses, ~65.5 thousand IP addressesunusable)</li>
+<li>224.0.0.0 through 239.255.255.255 (268.4 million IP addresses reserved for multicast use)</li>
+<li>and other reserved IP addresses</li>
+</ul>
+That’s a LOT of IP addresses unavailable for all our favorite Internet uses. But even all that space being set aside only brings us down to about 3.9 billion addressess. But, when you add in the calculations for Internet service providers who compete with one another and who have overlapping networks, you end up with most of the IP addreses being used by the Internet equipment itself, not the Internet. Worse, most of the Internet devices are in the United States, which is where most of the IP addresses are in use.
+
+</li>
+<li>IP Routing
+	<ul>
+	<li>IP Routing Basics
+	<p style="font-family:times new roman, times,serif;font-weight:normal;">
+	Routing is the process of moving data from one network to another by forwarding packets via gateways. With IP based networks, the routing decision is based on the destination address in the IP packet's header. Routing also occurs in networks running other protocols.</p>
+	</li>
+	<li>Static Routing</li>
+	<li>Dynamic Routing / Routing Protocols</li>
+		<li>Interior
+		<ul>
+			<li>RIP - Routing Information Protocol</li>
+			<li>OSPF - Open Shortest Path First</li>
+			<li>IS-IS - Intermediate System to Intermediate System</li>
+			<li>IGRP - interior Gateway Routing Protocol</li>
+			<li>EIGRP - Enhanced Interior Gateway Routing Protocol</li>
+		</ul>
+		</li>
+		<li>Exterior
+		<ul>
+			<li>BGP - Border Gateway Protocol</li>
+		</ul>
+		</li>
+
+</li>
+<li>IP Communication
+	<ul>
+	<li>Datagram Structure / Packet Format / Bit Map</li>
+	<li>Unicast vs. Broadcast</li>
+	<li>Multicast</li>
+ 	</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>

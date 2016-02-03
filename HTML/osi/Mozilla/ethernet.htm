@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ethernet</title>
+<style>
+body
+{
+background-color:gold;
+}
+<link rel="stylesheet" href="format1.css">
+</style>
+</head>
+<body>
+<div id="container" style="width:70%;margin-left:auto;margin-right:auto;">
+<b>
+<u>
+<center>
+<h1>
+Ethernet 
+</h1>
+</center>
+</u>
+</b>
+<hr color="black">
+<h3> Ethernet Protocol</h3>
+<h4>Introduction</h4>
+
+Over the course of the last 20 years, Ethernet has become the dominant LAN (local area network) technology used throughout the world. As the computerised workplace has become more network based, with the rise in E-mail and the Internet, Ethernet has become even more prevalent. Almost all companies nowadays use Ethernet to connect their computers to each other, and indeed, if you are at work, you are probably reading this website on a computer connected to the Internet through an Ethernet Network.
+
+<h3>Broadcast Network Operation</h3>
+
+Ethernet, by its very nature is a Broadcast Network. This means that the hosts are connected to a network through a single shared medium. This has the advantage that messages don't have to be routed to their destination, as all hosts are present on the shared medium, but it does incur another set of problems. The main problem which needs to be addressed is that of Media Access Control (MAC) or giving fair access to multiple nodes on a shared medium.
+
+<h4>Collisions</h4>
+
+When a number of nodes are connected to a single shared medium, one of the first things that need to be considered is what happens if two or more nodes try to broadcast at the same time. This is called a collision and prevents any information passing along the network because the multiple messages would corrupt each other, destroying both. There are two main methods for reducing the effect of collisions, Collision Avoidance or Collision Resolution. Collision Avoidance involves systems which prevent any collisions occurring in the first place, such as polling or token passing. Collision Resolution or Contention MAC Strategies rely on the fact that collisions will occur, and try to cope with them as well as possible. Ethernet uses Collision Resolution, so I shall focus on this strategy for the rest of the page.
+
+<h4>ALOHA</h4>
+
+The most basic form of Collision Resolution is to simply allow any station to send a message (or packet) whenever it is ready to send one. This form of transmission was first used in a prototype packet radio network, ALOHANET, commissioned in Hawaii in 1970, and has been known ever since as unslotted ALOHA. In Pure ALOHA, packets contain some form of error detection which is verified by the receiver. If the packet is received correctly, the destination returns an acknowledgment. If a collision occurs and the message is destroyed or corrupted, then no acknowledgment will be sent. If the sender does not receive an acknowledgment after a certain delay, it will re-send the message.
+
+<h4>Carrier Sense Multiple Access</h4>
+
+The next stage in Collision Resolution after ALOHA was to add the ability for devices to detect whether the shared medium is idle or not. This is called "Carrier Sense Multiple Access" or CSMA. This, however, does not completely eliminate collisions, since two devices could detect the medium as idle, then attempt to send at approximately the same time.<br/>
+
+CSMA is actually a family of protocols which vary by the method which they wait for the medium to become idle, known as the persistence strategy. Below is an explanation of some of the major strategies:
+<ul>
+<li>Persistent CSMA - In this strategy, when a device wants to send a message, it first listens to the medium. If it is idle the message is sent immediately, however, if it is busy the device continues to listen to the medium until it becomes idle and then sends the message immediately. The problem with 1-Persistent CSMA is that if a number of devices attempt to send during a busy period, then they shall all send as soon as the medium becomes idle, guaranteeing a collision.</li>
+<li>Nonpersistent CSMA - This strategy attempts to reduce the greediness of 1-Persistent CSMA. It again first listens to the medium to see if it is idle, if so it sends immediately. If the medium is busy, instead of continuing to listen for the medium to become idle and transmitting immediately, it waits a random period, then tries again. This means that in high load situations, there is less chance of collisions occurring.</li>
+</ul>
+<h4>Collision Window</h4>
+
+We have talked about a collision occurring if two devices send at approximately the same time, but how long does a device have to wait until it knows that its message has not been corrupted by a collision. Messages take a certain amount of time to travel from the device to the end of the signaling medium, which is known as the propagation delay. It would seem that a device only needs to wait for one propagation delay, until the message reaches the last receiver, to know if a collision has occurred. This, however, is not the case. Take for example the following situation. A device sends a message, which takes 1 propagation delay to reach the last device on the medium. This last device on the medium could then send a message just before the original message reaches it (i.e. just before 1 propagation delay). This new message would take an additional propagation delay to reach the original device, which means that this device would not know that a collision had occurred until after 2 propagation delays.
+
+<h4>Collision Detection</h4>
+
+Now that we know how long we need to wait to discover if a collision has occurred, we can use this to increase the effectiveness of CSMA. CSMA behaves inefficiently when a collision occurs, since both stations continue to send their full packet, even though it will be corrupted. A simple enhancement to CSMA is the addition of Collision Detection (CSMA/CD). A simple check is made to make sure that the signal present on the medium is the same as the outgoing message. If it isn't then a collision is occurring, and the message can be aborted. This means that the time spent sending the doomed messages can be put to a more productive use.
+
+<h3>Ethernet Protocol</h3>
+
+
+The Ethernet protocol is made up of a number of components, such as the structure of Ethernet frames, the Physical Layer and its MAC operation. This page will detail the fundamental structure of the Ethernet Protocol.
+
+<h4>Frame Structure</h4>
+
+Information is sent around an Ethernet network in discreet messages known as frames. The frame structure is quite simple, consisting of the following fields:<br/><br/>
+<img src="EthernetFrame.GIF">
+<br/>
+<ul>
+<li>The Preamble - This consists of seven bytes, all of the form "10101010". This allows the receiver's clock to be synchronised with the sender's.</li>
+<li>The Start Frame Delimiter - This is a single byte ("10101011") which is used to indicate the start of a frame.</li>
+<li>The Destination Address - This is the address of the intended recipient of the frame. The addresses in 802.3 use globally unique hardwired 48 bit addresses.</li>
+<li>The Source Address - This is the address of the source, in the same form as above.</li>
+<li>The Length - This is the length of the data in the Ethernet frame, which can be anything from 0 to 1500 bytes.</li>
+<li>Data - This is the information being sent by the frame.</li>
+<li>Pad - 802.3 frame must be at least 64 bytes long, so if the data is shorter than 46 bytes, the pad field must compensate. The reason for the minimum length lies with the collision detection mechanism. In CSMA/CD the sender must wait at least two times the maximum propagation delay before it knows that no collision has occurred. If a station sends a very short message, then it might release the ether without knowing that the frame has been corrupted. 802.3 sets an upper limit on the propagation delay, and the minimum frame size is set at the amount of data which can be sent in twice this figure.</li>
+<li>Checksum - This is used for error detection and recovery.</li>
+</ul>
+
+<h3>Ethernet vs 802.3</h3>
+
+Although the Ethernet and 802.3 standards are effectively the same thing, there are some subtle differences between Ethernet II and 802.3. The IEEE 802.3 standard was part of a bigger standard, 802. This contains a number of different network technologies, such as token ring, and token bus, as well as Ethernet of course. These technologies are brought together by a layer on top of these MAC Layers called Logical Link Control (LLC) a. Ethernet II, however, does not use this LLC layer.<br/>
+
+Another protocol, known as SNAP (subnetwork access protocol) was defined by the IEEE. This protocol is carried by LLC, and provides compatibility with the pre-802 Ethernet II standard.<br/><br/>
+<img src="ethernet.jpg" height="455" width="753">
+<br/>
+Designation Description<br/>
+<ul>
+	<li><b>10Base-2</b> 10 Mbps baseband Ethernet over coaxial cable with a maximum distance of 185 meters.
+		Also referred to as Thin Ethernet or Thinnet or Thinwire.</li>
+	<li><b>10Base-T</b> 10 Mbps baseband Ethernet over twisted pair cables with a maximum length of 100 meters.</li>
+	<li><b>10Base-5</b> 10 Mbps baseband Ethernet over coaxial cable with a maximum distance of 500 meters. Also referred to as Thick Ethernet or Thicknet 	or Thickwire.</li>
+	<li><b>100Base-FX</b> 100 Mbps baseband Ethernet over two multimode optical fibers.</li>
+	<li><b>100Base-T</b> 100 Mbps baseband Ethernet over twisted pair cable.</li>
+	<li><b>100Base-T4</b> 100 Mbps baseband Ethernet over four pairs of Category 3 or higher unshielded
+twisted pair cable.</li>
+	<li><b>100Base-TX</b> 100 Mbps baseband Ethernet over two pairs of shielded twisted pair or Category 4
+twisted pair cable.</li>
+	<li><b>1000Base-CX</b> 1000 Mbps baseband Ethernet over two pairs of 150 shielded twisted pair cable.</li>
+	<li><b>1000Base-LX</b> 1000 Mbps baseband Ethernet over two multimode or single-mode optical fibers using
+longwave laser optics.</li>
+	<li><b>1000Base-SX</b> 1000 Mbps baseband Ethernet over two multimode optical fibers using shortwave laser
+optics.</li>
+	<li><b>1000Base-T</b> 1000 Mbps baseband Ethernet over four pairs of Category 5 unshielded twisted pair
+cable.</li>
+</ul>
+
+<h4>Physical Layer</h4>
+
+The Physical Layer is concerned with the low level electronic way in which the signals are transmitted. In Ethernet, signals are transmitted using Manchester Encoding. This encoding is used to ensure that clocking data is sent along with the data, so that the sending and receiving device clocks are in sync. The logic levels are transmitted along the medium using voltage levels of ±0.85V.
+
+<h4>MAC Operation</h4>
+
+Ethernet is a CSMA/CD network (see Broadcast Network Operation for more information). To send a frame, a station on an 802.3 network, it first listens to check if the medium is busy. If it is then the station uses the 1-persistent strategy, and transmits after only a short fixed delay (the inter-frame gap) after the medium becomes idle. If there is no collision, then this message will be sent normally. If the device detects a collision however, the frame transmission stops and the station sends a jamming signal to alert other stations of the situation. The station then decides how long to wait before re-sending using a truncated binary exponential backoff algorithm. The station waits for some multiple of 51.2us slots. The station first waits for either 0 or 1 slots, then transmits. If there is another collision, then the station waits for 0,1,2 or 3 slots before transmitting. This continues with the station choosing to wait a random number of slots from 0 to 2^k - 1 if there have been k collisions in the current transmission, until k=10 where the number of slots chosen from stops growing. After 16 continuous collisions, the MAC layer gives up and reports a failure to the layer above.
+
+<br/>
+
+
+
+
+
+<hr>
+<a href="osinew.htm">
+<img src="Left Arrow.png" width="50" height="50"align="right">
+</a>
+
+</div>
+</body>
+</html>
